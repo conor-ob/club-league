@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "license": "UNLICENSED",
   "scripts": {
-    "convert": "ts-node csvToJson.ts"
+    "convert": "ts-node csvToJson.ts",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@apollo/server": "^4.10.0",

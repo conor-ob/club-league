@@ -20,7 +20,8 @@
     "clean": "turbo run clean && rm -rf yarn.lock",
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "start": "turbo run start"
+    "start": "turbo run start",
+    "typecheck": "turbo run typecheck"
   },
   "resolutions": {
     "metro": "~0.76.7",

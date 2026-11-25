@@ -22,7 +22,7 @@ const { useParams } = createParam<{
   id: string
 }>()
 
-export function GcFeature({ providedStageId }: { providedStageId: string }) {
+export function GcFeature({ providedStageId }: { providedStageId?: string }) {
   const { params } = useParams()
   const colorScheme = useColorScheme()
 
