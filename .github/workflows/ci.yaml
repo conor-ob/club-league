@@ -1,0 +1,48 @@
+name: ⚡️ CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+# Cancel superseded PR runs only: with checkSuites on, Railway waits for every
+# main commit's CI to finish before deploying it
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  ci:
+    name: ✅ Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      # Yarn 3 comes from .yarnrc.yml's yarnPath, pinned by packageManager
+      - name: Install deps
+        id: install
+        run: |
+          corepack enable
+          yarn install --immutable
+
+      # Checks below run even if an earlier one fails, so one run reports every
+      # failure. They still skip if setup failed
+      - name: Typecheck
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: yarn typecheck
+
+      - name: Build
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: yarn build
