@@ -29,8 +29,12 @@ updates:
       # Without prefix-development, dev dependencies use this prefix too.
       prefix: chore
       include: scope
-    # Repo exceptions: none. This repo is a yarn 3 workspace (apps/*,
-    # packages/*), which the npm ecosystem covers from the root yarn.lock.
+    # Repo exceptions: this repo is a yarn 3 workspace (apps/*, packages/*),
+    # which the npm ecosystem covers from the root yarn.lock.
+    ignore:
+      # @types/node tracks the Node runtime major, moved deliberately with it.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: /
@@ -69,7 +73,7 @@ updates:
     commit-message:
       prefix: build
       include: scope
-    # Repo exceptions: Node majors move with CI's node-version and the
+    # Repo exceptions: Node majors move with .nvmrc and the
     # runtime, so they're upgraded by hand.
     ignore:
       - dependency-name: node

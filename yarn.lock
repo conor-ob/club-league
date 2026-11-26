@@ -2974,7 +2974,7 @@ __metadata:
     "@types/body-parser": ^1.19.5
     "@types/cors": ^2.8.17
     "@types/express": ^4.17.21
-    "@types/node": ^20.11.5
+    "@types/node": ^24.19.2
     "@types/papaparse": ^5.3.14
     body-parser: ^1.20.9
     cors: ^2.8.5
@@ -3007,7 +3007,7 @@ __metadata:
     "@types/cors": ^2.8.17
     "@types/express": ^4.17.21
     "@types/lodash": ^4.17.0
-    "@types/node": ^20.11.5
+    "@types/node": ^24.19.2
     "@types/papaparse": ^5.3.14
     app: "*"
     autoprefixer: ^10.4.7
@@ -6028,12 +6028,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.11.5":
-  version: 20.11.28
-  resolution: "@types/node@npm:20.11.28"
+"@types/node@npm:^24.19.2":
+  version: 24.19.4
+  resolution: "@types/node@npm:24.19.4"
   dependencies:
-    undici-types: ~5.26.4
-  checksum: 83fe7e649c6439103872a292f7b9808233e1eea4bf7d5afa6fce71729e3f7a06933cd792543db84cf65b89ca985fb6f44efaeb748e2ce51a6525ade030338af8
+    undici-types: ">=7.24.0 <7.24.7"
+  checksum: b5109c0c015fb154089b0f0e3d15413806693805f6af585bab9080e4edb45840ca473056fc89eb0df36ab9c97ae57332c2bee419fa2ce8d2b2fdf1e87b9eec8a
   languageName: node
   linkType: hard
 
@@ -18235,10 +18235,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~5.26.4":
-  version: 5.26.5
-  resolution: "undici-types@npm:5.26.5"
-  checksum: 3192ef6f3fd5df652f2dc1cd782b49d6ff14dc98e5dced492aa8a8c65425227da5da6aafe22523c67f035a272c599bb89cfe803c1db6311e44bed3042fc25487
+"undici-types@npm:>=7.24.0 <7.24.7":
+  version: 7.24.6
+  resolution: "undici-types@npm:7.24.6"
+  checksum: e79802e37dc472c6324850d938b5df6b9e796f6a1bb5f8ccd24f3a6d17eae94a9cc125506c8b339a3293ffbad81daeba30b843e564c1d237b3c8deafd98b6267
   languageName: node
   linkType: hard
 
