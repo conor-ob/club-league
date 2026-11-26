@@ -4024,17 +4024,17 @@ __metadata:
   linkType: hard
 
 "@graphql-tools/executor-legacy-ws@npm:^1.0.6":
-  version: 1.0.6
-  resolution: "@graphql-tools/executor-legacy-ws@npm:1.0.6"
+  version: 1.1.39
+  resolution: "@graphql-tools/executor-legacy-ws@npm:1.1.39"
   dependencies:
-    "@graphql-tools/utils": ^10.0.13
-    "@types/ws": ^8.0.0
+    "@graphql-tools/utils": ^12.1.0
+    "@types/ws": ^8.18.2
     isomorphic-ws: ^5.0.0
     tslib: ^2.4.0
-    ws: ^8.15.0
+    ws: ^8.21.3
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 1333ed9bb4636e1e70dbda234a18bd0aa4db7e375dfaa1f334c2596e2ab0ce7125a2e1250806b57ca96651de94c39f639e427a2047cff299587b76c21cb4dacd
+  checksum: 1efacfe02fe4a4487e47c7b2fc49396a455ee16377561174b710797e75ff287753e58d9b95cc5268bc73b645933b78f28ded5f42836a212e0b973d18429ee5df
   languageName: node
   linkType: hard
 
@@ -4297,6 +4297,20 @@ __metadata:
   peerDependencies:
     graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
   checksum: 13ca772f80f1d757ab5419e231fc68994ae90faa4e6ad00054900e7fd22d459710d7629b39633abd782e3aa151e7f9c3a10da2fbd777c90147583b9591b34bb2
+  languageName: node
+  linkType: hard
+
+"@graphql-tools/utils@npm:^12.1.0":
+  version: 12.1.0
+  resolution: "@graphql-tools/utils@npm:12.1.0"
+  dependencies:
+    "@graphql-typed-document-node/core": ^3.1.1
+    "@whatwg-node/promise-helpers": ^2.0.0
+    cross-inspect: 1.0.1
+    tslib: ^2.4.0
+  peerDependencies:
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+  checksum: 5b2a5d1210c7a3bd2456473dd16920a171548d6bd67ef89d911b114eb3da03cc1bffac5eea326f4e1493b8c453dbae2faa8cc66c81c44a2f9fd91557e3588448
   languageName: node
   linkType: hard
 
@@ -5945,6 +5959,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/ws@npm:^8.18.2":
+  version: 8.18.2
+  resolution: "@types/ws@npm:8.18.2"
+  dependencies:
+    "@types/node": "*"
+  checksum: 6b92ac97d46f9f7c87c209c28d7c10fc762dd8604e2e5440239ff6eb33410dc142a16d84c76943295f35f29294e67f97f8390f785c60f30308c4c302368b85ee
+  languageName: node
+  linkType: hard
+
 "@types/yargs-parser@npm:*":
   version: 21.0.3
   resolution: "@types/yargs-parser@npm:21.0.3"
@@ -6142,6 +6165,15 @@ __metadata:
     fast-querystring: ^1.1.1
     tslib: ^2.3.1
   checksum: f5ab0490c430b16d91de7022d54bdbfd7e5ac237086f7f40ae56801e027b31eed420604699b803fa88971cbc8805f07663ebd27a66c020d61f4b36188df30ab0
+  languageName: node
+  linkType: hard
+
+"@whatwg-node/promise-helpers@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "@whatwg-node/promise-helpers@npm:2.0.2"
+  dependencies:
+    tslib: ^2.9.1
+  checksum: 384057b192e50a39937b5d5fae48689aa4e5ef820905f244ea60df1eceabcd1a2ed0ce09e3f6d63638ac540065054541fc003fe02595dae947b97d3f1671c444
   languageName: node
   linkType: hard
 
@@ -7987,6 +8019,15 @@ __metadata:
   dependencies:
     tslib: ^2.4.0
   checksum: 975c81799549627027254eb70f1c349cefb14435d580bea6f351f510c839dcb1a9288983407bac2ad317e6eff29cf1e99299606da21f404562bfa64cec502239
+  languageName: node
+  linkType: hard
+
+"cross-inspect@npm:1.0.1":
+  version: 1.0.1
+  resolution: "cross-inspect@npm:1.0.1"
+  dependencies:
+    tslib: ^2.4.0
+  checksum: 7c1e02e0a9670b62416a3ea1df7ae880fdad3aa0a857de8932c4e5f8acd71298c7e3db9da8e9da603f5692cd1879938f5e72e34a9f5d1345987bef656d117fc1
   languageName: node
   linkType: hard
 
@@ -17213,6 +17254,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.9.1":
+  version: 2.9.1
+  resolution: "tslib@npm:2.9.1"
+  checksum: 40f590cef617a6ad220ac521a0dd8b8c48faf1494468c195c792dc212b293260b7606ffd505aa52328a07954304e5c2631eb8f884034db2286a98efd1aa1686f
+  languageName: node
+  linkType: hard
+
 "tsutils@npm:^3.21.0":
   version: 3.21.0
   resolution: "tsutils@npm:3.21.0"
@@ -18407,7 +18455,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.12.0, ws@npm:^8.12.1, ws@npm:^8.13.0, ws@npm:^8.15.0":
+"ws@npm:^8.12.0, ws@npm:^8.12.1, ws@npm:^8.13.0":
   version: 8.16.0
   resolution: "ws@npm:8.16.0"
   peerDependencies:
@@ -18419,6 +18467,21 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: feb3eecd2bae82fa8a8beef800290ce437d8b8063bdc69712725f21aef77c49cb2ff45c6e5e7fce622248f9c7abaee506bae0a9064067ffd6935460c7357321b
+  languageName: node
+  linkType: hard
+
+"ws@npm:^8.21.3":
+  version: 8.23.0
+  resolution: "ws@npm:8.23.0"
+  peerDependencies:
+    bufferutil: ^4.0.1
+    utf-8-validate: ">=5.0.2"
+  peerDependenciesMeta:
+    bufferutil:
+      optional: true
+    utf-8-validate:
+      optional: true
+  checksum: 7d7d872a7a2a23a5e4e0cff30327c3dc571f04284ee2117455bdd4c3c35432d5851d9472d1a41c999c759eb593f8ea3f5755763100b26ca6d7d00b66324841c2
   languageName: node
   linkType: hard
 
