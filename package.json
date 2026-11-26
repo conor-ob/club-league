@@ -24,6 +24,7 @@
     "typecheck": "turbo run typecheck"
   },
   "resolutions": {
+    "@types/node": "^24.19.2",
     "metro": "~0.76.7",
     "metro-resolver": "~0.76.7"
   },
