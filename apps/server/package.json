@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@apollo/server": "^4.10.0",
+    "@apollo/server": "^5.5.0",
     "@club-league/config": "*",
     "@club-league/utils": "*",
     "@expo/next-adapter": "5.0.2",
