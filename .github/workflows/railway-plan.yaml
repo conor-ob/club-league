@@ -27,14 +27,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # railway.ts imports railway/iac, but railwayapp/config@v1 always runs
       # `npm install` at the repo root, and npm can't resolve this yarn
       # workspace's peer deps. Install with yarn, then hide package.json so the
       # npm step no-ops
       - name: Install node
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
 
@@ -49,7 +49,7 @@ jobs:
       # Uploads the plan as an artifact; railway-apply.yaml applies exactly
       # this plan on merge
       - name: Railway config plan
-        uses: railwayapp/config@v1
+        uses: railwayapp/config@9e17d413dbe219f19d62538d9c06b5dbb5e9abf8 # v1.2.0
         with:
           command: plan
           railway-token: ${{ secrets.RAILWAY_TOKEN }}
