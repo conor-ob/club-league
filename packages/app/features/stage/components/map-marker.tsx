@@ -1,13 +1,13 @@
-import { Text, View } from 'react-native'
+import { Text, View } from "react-native";
 
 type MapMarkerProps = {
-  label: string
-}
+  label: string;
+};
 
 export function MapMarker({ label }: MapMarkerProps) {
   return (
-    <View className='bg-brand-gc items-center rounded-lg px-2 py-0.5'>
-      <Text className='font-inter-bold text-base text-black'>{label}</Text>
+    <View className="bg-brand-gc items-center rounded-lg px-2 py-0.5">
+      <Text className="font-inter-bold text-base text-black">{label}</Text>
     </View>
-  )
+  );
 }

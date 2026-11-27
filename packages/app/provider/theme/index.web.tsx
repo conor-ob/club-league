@@ -1,20 +1,20 @@
-import { ThemeProvider as NextThemeProvider } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { ThemeProvider as NextThemeProvider } from "next-themes";
+import { useEffect, useState } from "react";
 
 export const ThemeProvider = ({
-  children
+  children,
 }: {
-  children: React.ReactElement
+  children: React.ReactElement;
 }) => {
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
-    return null
+    return null;
   }
 
-  return <NextThemeProvider attribute='media'>{children}</NextThemeProvider>
-}
+  return <NextThemeProvider attribute="media">{children}</NextThemeProvider>;
+};

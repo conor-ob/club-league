@@ -1,3 +1,3 @@
-import { ScheduleFeature } from 'app/features/schedule/schedule-feature'
+import { ScheduleFeature } from "app/features/schedule/schedule-feature";
 
-export default ScheduleFeature
+export default ScheduleFeature;

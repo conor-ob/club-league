@@ -1,77 +1,77 @@
-import type { Theme } from '@react-navigation/native'
-import { vars } from 'nativewind'
+import type { Theme } from "@react-navigation/native";
+import { vars } from "nativewind";
 
 export const colors = {
   light: {
-    background: 'rgb(246, 246, 246)',
-    brandDefault: 'rgba(252, 76, 2, 1)',
-    brandGc: 'rgba(253, 224, 71, 1)',
-    brandBlue: 'rgb(0, 122, 255)',
-    brandGreen: 'rgba(52, 199, 89, 1)',
-    brandPurple: 'rgba(175, 82, 222, 1)',
-    brandRed: 'rgba(255, 59, 48, 1)',
-    brandStrava: 'rgba(252, 76, 2, 1)',
-    border: 'rgba(179, 179, 179, 1)',
-    card: 'rgba(255, 255, 255, 1)',
-    skeleton: 'rgba(60, 60, 67, 0.12)',
-    textColorPrimary: 'rgba(0, 0, 0, 1)',
-    textColorSecondary: 'rgba(60, 60, 67, 0.7)',
-    textColorTertiary: 'rgba(60, 60, 67, 0.30)',
-    textColorQuarternary: 'rgba(60, 60, 67, 0.18)'
+    background: "rgb(246, 246, 246)",
+    brandDefault: "rgba(252, 76, 2, 1)",
+    brandGc: "rgba(253, 224, 71, 1)",
+    brandBlue: "rgb(0, 122, 255)",
+    brandGreen: "rgba(52, 199, 89, 1)",
+    brandPurple: "rgba(175, 82, 222, 1)",
+    brandRed: "rgba(255, 59, 48, 1)",
+    brandStrava: "rgba(252, 76, 2, 1)",
+    border: "rgba(179, 179, 179, 1)",
+    card: "rgba(255, 255, 255, 1)",
+    skeleton: "rgba(60, 60, 67, 0.12)",
+    textColorPrimary: "rgba(0, 0, 0, 1)",
+    textColorSecondary: "rgba(60, 60, 67, 0.7)",
+    textColorTertiary: "rgba(60, 60, 67, 0.30)",
+    textColorQuarternary: "rgba(60, 60, 67, 0.18)",
   },
   dark: {
-    background: 'rgb(1, 1, 1)',
-    brandDefault: 'rgba(253, 224, 71, 1)',
-    brandGc: 'rgba(253, 224, 71, 1)',
-    brandPurple: 'rgba(191, 90, 242, 1)',
-    brandBlue: 'rgb(10, 132, 255)',
-    brandGreen: 'rgba(48, 209, 88, 1)',
-    brandRed: 'rgba(255, 69, 58, 1)',
-    brandStrava: 'rgba(252, 76, 2, 1)',
-    border: 'rgba(38, 38, 38, 1)',
-    card: 'rgba(18, 18, 18, 1)',
-    skeleton: 'rgba(235, 235, 245, 0.12)',
-    textColorPrimary: 'rgba(255, 255, 255, 1)',
-    textColorSecondary: 'rgba(235, 235, 235, 0.6)',
-    textColorTertiary: 'rgba(235, 235, 245, 0.30)',
-    textColorQuarternary: 'rgba(235, 235, 245, 0.18)'
-  }
-}
+    background: "rgb(1, 1, 1)",
+    brandDefault: "rgba(253, 224, 71, 1)",
+    brandGc: "rgba(253, 224, 71, 1)",
+    brandPurple: "rgba(191, 90, 242, 1)",
+    brandBlue: "rgb(10, 132, 255)",
+    brandGreen: "rgba(48, 209, 88, 1)",
+    brandRed: "rgba(255, 69, 58, 1)",
+    brandStrava: "rgba(252, 76, 2, 1)",
+    border: "rgba(38, 38, 38, 1)",
+    card: "rgba(18, 18, 18, 1)",
+    skeleton: "rgba(235, 235, 245, 0.12)",
+    textColorPrimary: "rgba(255, 255, 255, 1)",
+    textColorSecondary: "rgba(235, 235, 235, 0.6)",
+    textColorTertiary: "rgba(235, 235, 245, 0.30)",
+    textColorQuarternary: "rgba(235, 235, 245, 0.18)",
+  },
+};
 
 export const themes = {
   light: vars({
-    '--color-background': colors.light.background,
-    '--color-brand-default': colors.light.brandDefault,
-    '--color-brand-gc': colors.light.brandGc,
-    '--color-brand-blue': colors.light.brandBlue,
-    '--color-brand-purple': colors.light.brandPurple,
-    '--color-brand-green': colors.light.brandGreen,
-    '--color-brand-red': colors.light.brandRed,
-    '--color-brand-strava': colors.light.brandStrava,
-    '--color-card': colors.light.card,
-    '--color-skeleton': colors.light.skeleton,
-    '--color-primary': colors.light.textColorPrimary,
-    '--color-secondary': colors.light.textColorSecondary,
-    '--color-tertiary': colors.light.textColorTertiary,
-    '--color-quarternary': colors.light.textColorQuarternary
+    "--color-background": colors.light.background,
+    "--color-brand-default": colors.light.brandDefault,
+    "--color-brand-gc": colors.light.brandGc,
+    "--color-brand-blue": colors.light.brandBlue,
+    "--color-brand-purple": colors.light.brandPurple,
+    "--color-brand-green": colors.light.brandGreen,
+    "--color-brand-red": colors.light.brandRed,
+    "--color-brand-strava": colors.light.brandStrava,
+    "--color-card": colors.light.card,
+    "--color-skeleton": colors.light.skeleton,
+    "--color-primary": colors.light.textColorPrimary,
+    "--color-secondary": colors.light.textColorSecondary,
+    "--color-tertiary": colors.light.textColorTertiary,
+    "--color-quarternary": colors.light.textColorQuarternary,
   }),
   dark: vars({
-    '--color-background': colors.dark.background,
-    '--color-brand-default': colors.dark.brandDefault,
-    '--color-brand-gc': colors.dark.brandGc,
-    '--color-brand-blue': colors.dark.brandBlue,
-    '--color-brand-purple': colors.dark.brandPurple,
-    '--color-brand-green': colors.dark.brandGreen,
-    '--color-brand-red': colors.dark.brandRed,
-    '--color-brand-strava': colors.dark.brandStrava,
-    '--color-card': colors.dark.card,
-    '--color-skeleton': colors.dark.skeleton,
-    '--color-primary': colors.dark.textColorPrimary,
-    '--color-secondary': colors.dark.textColorSecondary,
-    '--color-tertiary': colors.dark.textColorTertiary,
-    '--color-quarternary': colors.dark.textColorQuarternary
-  })
-}
+    "--color-background": colors.dark.background,
+    "--color-brand-default": colors.dark.brandDefault,
+    "--color-brand-gc": colors.dark.brandGc,
+    "--color-brand-blue": colors.dark.brandBlue,
+    "--color-brand-purple": colors.dark.brandPurple,
+    "--color-brand-green": colors.dark.brandGreen,
+    "--color-brand-red": colors.dark.brandRed,
+    "--color-brand-strava": colors.dark.brandStrava,
+    "--color-card": colors.dark.card,
+    "--color-skeleton": colors.dark.skeleton,
+    "--color-primary": colors.dark.textColorPrimary,
+    "--color-secondary": colors.dark.textColorSecondary,
+    "--color-tertiary": colors.dark.textColorTertiary,
+    "--color-quarternary": colors.dark.textColorQuarternary,
+  }),
+};
 
 export const lightTheme: Theme = {
   dark: false,
@@ -81,9 +81,9 @@ export const lightTheme: Theme = {
     card: colors.light.card,
     text: colors.light.textColorPrimary,
     border: colors.light.border,
-    notification: 'rgb(255, 59, 48)'
-  }
-}
+    notification: "rgb(255, 59, 48)",
+  },
+};
 
 export const darkTheme: Theme = {
   dark: true,
@@ -93,6 +93,6 @@ export const darkTheme: Theme = {
     card: colors.dark.card,
     text: colors.dark.textColorPrimary,
     border: colors.dark.border,
-    notification: 'rgb(255, 69, 58)'
-  }
-}
+    notification: "rgb(255, 69, 58)",
+  },
+};

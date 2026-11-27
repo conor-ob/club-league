@@ -1,3 +1,3 @@
-import { RefreshControl } from 'react-native'
+import { RefreshControl } from "react-native";
 
-export default RefreshControl
+export default RefreshControl;

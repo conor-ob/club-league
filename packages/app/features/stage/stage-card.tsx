@@ -1,25 +1,25 @@
-import { TouchableOpacity, useColorScheme, View } from 'react-native'
-import { Link } from 'solito/link'
-import { Card } from '../../components/card/card'
-import { HeroIcon } from '../../components/icon/heroicon'
-import { Row } from '../../components/layout/row'
-import { colors } from '../../design/colors'
-import type { Stage } from '../../generated/graphql'
-import { StageLayout } from './stage-layout'
+import { TouchableOpacity, useColorScheme, View } from "react-native";
+import { Link } from "solito/link";
+import { Card } from "../../components/card/card";
+import { HeroIcon } from "../../components/icon/heroicon";
+import { Row } from "../../components/layout/row";
+import { colors } from "../../design/colors";
+import type { Stage } from "../../generated/graphql";
+import { StageLayout } from "./stage-layout";
 
 export function StageCard({ stage, href }: { stage: Stage; href?: string }) {
-  const colorScheme = useColorScheme()
+  const colorScheme = useColorScheme();
 
   return href ? (
     <Card>
       <TouchableOpacity activeOpacity={0.6}>
         <Link href={href}>
-          <Row className='flex-row items-center justify-between p-4'>
+          <Row className="flex-row items-center justify-between p-4">
             <StageLayout stage={stage} />
-            <View className='w-2' />
+            <View className="w-2" />
             <HeroIcon
-              name='chevron-right'
-              color={colors[colorScheme ?? 'light'].textColorSecondary}
+              name="chevron-right"
+              color={colors[colorScheme ?? "light"].textColorSecondary}
               size={24}
             />
           </Row>
@@ -28,9 +28,9 @@ export function StageCard({ stage, href }: { stage: Stage; href?: string }) {
     </Card>
   ) : (
     <Card>
-      <View className='pb-4 pl-4 pr-12 pt-4'>
+      <View className="pb-4 pl-4 pr-12 pt-4">
         <StageLayout stage={stage} />
       </View>
     </Card>
-  )
+  );
 }

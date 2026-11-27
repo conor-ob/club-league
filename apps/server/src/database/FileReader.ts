@@ -1,11 +1,11 @@
-import { readFileSync } from 'node:fs'
-import path from 'node:path'
+import { readFileSync } from "node:fs";
+import path from "node:path";
 
 export class FileReader {
   public readFile(relativePath: string): string {
-    const filePath = path.resolve(process.cwd(), relativePath)
+    const filePath = path.resolve(process.cwd(), relativePath);
     return readFileSync(filePath, {
-      encoding: 'utf-8'
-    })
+      encoding: "utf-8",
+    });
   }
 }

@@ -1,44 +1,44 @@
-import { colors } from 'app/design/colors'
-import type React from 'react'
-import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
-import { ScrollView, useColorScheme } from 'react-native'
-import { RefreshControl } from './RefreshControl'
+import { colors } from "app/design/colors";
+import type React from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { ScrollView, useColorScheme } from "react-native";
+import { RefreshControl } from "./RefreshControl";
 
 export function RefreshScrollView({
   contentContainerClassName,
   loading,
   onRefresh,
-  children
+  children,
 }: {
-  contentContainerClassName?: string
-  loading: boolean
-  onRefresh: () => void
-  children: React.ReactNode
+  contentContainerClassName?: string;
+  loading: boolean;
+  onRefresh: () => void;
+  children: React.ReactNode;
 }) {
-  const colorScheme = useColorScheme()
-  const [refreshing, setRefreshing] = useState(false)
+  const colorScheme = useColorScheme();
+  const [refreshing, setRefreshing] = useState(false);
 
   const handleRefresh = useCallback(() => {
-    setRefreshing(true)
-    onRefresh()
-  }, [onRefresh])
+    setRefreshing(true);
+    onRefresh();
+  }, [onRefresh]);
 
   useEffect(() => {
     if (!loading) {
-      setRefreshing(false)
+      setRefreshing(false);
     }
-  }, [loading])
+  }, [loading]);
 
   return (
     <ScrollView
       contentContainerClassName={contentContainerClassName}
-      contentInsetAdjustmentBehavior='automatic'
+      contentInsetAdjustmentBehavior="automatic"
       refreshControl={
         <RefreshControl
-          tintColor={colors[colorScheme ?? 'light'].textColorSecondary}
+          tintColor={colors[colorScheme ?? "light"].textColorSecondary}
           refreshing={refreshing}
           onRefresh={() => {
-            handleRefresh()
+            handleRefresh();
           }}
           enabled={useWindowPosition() === 0}
         />
@@ -46,18 +46,18 @@ export function RefreshScrollView({
     >
       {children}
     </ScrollView>
-  )
+  );
 }
 
 function useWindowPosition() {
-  const [scrollPosition, setPosition] = useState(0)
+  const [scrollPosition, setPosition] = useState(0);
   useLayoutEffect(() => {
     function updatePosition() {
-      setPosition(window.pageYOffset)
+      setPosition(window.pageYOffset);
     }
-    window.addEventListener('scroll', updatePosition)
-    updatePosition()
-    return () => window.removeEventListener('scroll', updatePosition)
-  }, [])
-  return scrollPosition
+    window.addEventListener("scroll", updatePosition);
+    updatePosition();
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, []);
+  return scrollPosition;
 }

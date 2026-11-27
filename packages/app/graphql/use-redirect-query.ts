@@ -1,5 +1,5 @@
-import { useQuery } from '@apollo/client'
-import { graphql } from '../generated'
+import { useQuery } from "@apollo/client";
+import { graphql } from "../generated";
 
 const redirectQuery = graphql(`
   query RedirectQuery($seasonId: ID) {
@@ -8,15 +8,15 @@ const redirectQuery = graphql(`
       currentStageId
     }
   }
-`)
+`);
 
 type RedirectQueryVariables = {
-  seasonId?: string
-}
+  seasonId?: string;
+};
 
 export function useRedirectQuery({ seasonId }: RedirectQueryVariables) {
   return useQuery(redirectQuery, {
     variables: { seasonId: seasonId },
-    notifyOnNetworkStatusChange: true
-  })
+    notifyOnNetworkStatusChange: true,
+  });
 }

@@ -1,5 +1,5 @@
-import { useQuery } from '@apollo/client'
-import { graphql } from '../generated'
+import { useQuery } from "@apollo/client";
+import { graphql } from "../generated";
 
 const stageResultsQuery = graphql(`
   query StageResults($stageId: ID!) {
@@ -68,12 +68,12 @@ const stageResultsQuery = graphql(`
       info
     }
   }
-`)
+`);
 
 export function useStageResultsQuery({ stageId }: { stageId: string }) {
   return useQuery(stageResultsQuery, {
     variables: { stageId: stageId },
     notifyOnNetworkStatusChange: true,
-    skip: stageId === undefined
-  })
+    skip: stageId === undefined,
+  });
 }

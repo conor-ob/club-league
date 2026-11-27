@@ -1,12 +1,12 @@
-import type { Stage } from '../../generated/graphql'
+import type { Stage } from "../../generated/graphql";
 
 export type Schedule = {
-  nextStage?: Stage
-  upcoming: ScheduleMonth[]
-  completed: ScheduleMonth[]
-}
+  nextStage?: Stage;
+  upcoming: ScheduleMonth[];
+  completed: ScheduleMonth[];
+};
 
 export type ScheduleMonth = {
-  displayName: string
-  stages: Stage[]
-}
+  displayName: string;
+  stages: Stage[];
+};

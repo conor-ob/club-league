@@ -1,26 +1,26 @@
-import { addHours, parseISO } from 'date-fns'
-import type { Database } from '../database/Database'
-import { Table } from '../database/Table'
-import type { StageEntity } from '../entity/StageEntity'
+import { addHours, parseISO } from "date-fns";
+import type { Database } from "../database/Database";
+import { Table } from "../database/Table";
+import type { StageEntity } from "../entity/StageEntity";
 import {
   type Category,
   type CategoryGroup,
   type Club,
   RaceType,
   type Stage,
-  StageStatus
-} from '../generated/graphql'
+  StageStatus,
+} from "../generated/graphql";
 
 export class StageMapper {
-  private database: Database
+  private database: Database;
 
   constructor(database: Database) {
-    this.database = database
+    this.database = database;
   }
 
   map(stageEntity: StageEntity): Stage {
-    const categories = this.database.getAll<Category>(Table.CATEGORIES)
-    const clubs = this.database.getAll<Club>(Table.CLUBS)
+    const categories = this.database.getAll<Category>(Table.CATEGORIES);
+    const clubs = this.database.getAll<Club>(Table.CLUBS);
     return {
       id: stageEntity.id,
       name: stageEntity.name,
@@ -33,16 +33,16 @@ export class StageMapper {
       mandatory: stageEntity.mandatory,
       categoryGroups: this.mapCategoryGroups(
         stageEntity.categoryGroups,
-        categories
+        categories,
       ),
       coordinates: stageEntity.coordinates,
-      info: stageEntity.info ?? ['Info will be available before the stage']
-    }
+      info: stageEntity.info ?? ["Info will be available before the stage"],
+    };
   }
 
   mapAll(stageEntities: StageEntity[]): Stage[] {
-    const categories = this.database.getAll<Category>(Table.CATEGORIES)
-    const clubs = this.database.getAll<Club>(Table.CLUBS)
+    const categories = this.database.getAll<Category>(Table.CATEGORIES);
+    const clubs = this.database.getAll<Club>(Table.CLUBS);
     return stageEntities.map((stageEntity) => {
       return {
         id: stageEntity.id,
@@ -56,53 +56,53 @@ export class StageMapper {
         mandatory: stageEntity.mandatory,
         categoryGroups: this.mapCategoryGroups(
           stageEntity.categoryGroups,
-          categories
+          categories,
         ),
         coordinates: stageEntity.coordinates,
-        info: stageEntity.info ?? ['Info will be available before the stage']
-      }
-    })
+        info: stageEntity.info ?? ["Info will be available before the stage"],
+      };
+    });
   }
 
   private mapStatus(startTime: string): StageStatus {
-    const date = new Date()
-    const stageDate = parseISO(startTime)
+    const date = new Date();
+    const stageDate = parseISO(startTime);
     if (date.getTime() < stageDate.getTime()) {
-      return StageStatus.Upcoming
+      return StageStatus.Upcoming;
     } else if (date.getTime() < addHours(stageDate, 2).getTime()) {
-      return StageStatus.InProgress
+      return StageStatus.InProgress;
     } else {
-      return StageStatus.Completed
+      return StageStatus.Completed;
     }
   }
 
   private mapType(type: string): RaceType {
     switch (type) {
-      case 'CRITERIUM':
-        return RaceType.Criterium
-      case 'HILL_CLIMB':
-        return RaceType.HillClimb
-      case 'ROAD_RACE':
-        return RaceType.RoadRace
-      case 'TIME_TRIAL':
-        return RaceType.TimeTrial
+      case "CRITERIUM":
+        return RaceType.Criterium;
+      case "HILL_CLIMB":
+        return RaceType.HillClimb;
+      case "ROAD_RACE":
+        return RaceType.RoadRace;
+      case "TIME_TRIAL":
+        return RaceType.TimeTrial;
       default:
-        return RaceType.RoadRace
+        return RaceType.RoadRace;
     }
   }
 
   private mapCategoryGroups(
     categoryGroups: string,
-    categories: Category[]
+    categories: Category[],
   ): CategoryGroup[] {
-    return categoryGroups.split(',').flatMap((categoryGroup) => {
+    return categoryGroups.split(",").flatMap((categoryGroup) => {
       return {
         id: categoryGroup,
-        categories: categoryGroup.split('+').map(
+        categories: categoryGroup.split("+").map(
           (categoryCode) =>
-            categories.find((category) => category.code === categoryCode)! // TODO !
-        )
-      }
-    })
+            categories.find((category) => category.code === categoryCode)!, // TODO !
+        ),
+      };
+    });
   }
 }

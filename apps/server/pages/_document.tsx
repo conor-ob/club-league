@@ -1,64 +1,64 @@
-import type { DocumentContext } from 'next/document'
-import NextDocument, { Head, Html, Main, NextScript } from 'next/document'
-import React from 'react'
-import { AppRegistry } from 'react-native'
+import type { DocumentContext } from "next/document";
+import NextDocument, { Head, Html, Main, NextScript } from "next/document";
+import React from "react";
+import { AppRegistry } from "react-native";
 
 class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext) {
-    AppRegistry.registerComponent('Main', () => Main)
+    AppRegistry.registerComponent("Main", () => Main);
     // @ts-expect-error
-    const { getStyleElement } = AppRegistry.getApplication('Main')
-    const styles = [getStyleElement()]
+    const { getStyleElement } = AppRegistry.getApplication("Main");
+    const styles = [getStyleElement()];
 
-    const initialProps = await NextDocument.getInitialProps(ctx)
-    return { ...initialProps, styles: React.Children.toArray(styles) }
+    const initialProps = await NextDocument.getInitialProps(ctx);
+    return { ...initialProps, styles: React.Children.toArray(styles) };
   }
 
   // TODO bg-background color
   render() {
     return (
-      <Html lang='en'>
+      <Html lang="en">
         <Head>
-          <meta charSet='UTF-8' />
-          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-          <link rel='preconnect' href='https://cdn.jsdelivr.net' />
-          <link rel='preconnect' href='https://www.googletagmanager.com' />
+          <meta charSet="UTF-8" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+          <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+          <link rel="preconnect" href="https://www.googletagmanager.com" />
           <link
-            rel='preload'
-            href='https://cdn.jsdelivr.net/gh/conor-ob/club-league@latest/apps/cdn/font/inter-regular.otf'
-            as='font'
-            type='font/otf'
-            crossOrigin='anonymous'
+            rel="preload"
+            href="https://cdn.jsdelivr.net/gh/conor-ob/club-league@latest/apps/cdn/font/inter-regular.otf"
+            as="font"
+            type="font/otf"
+            crossOrigin="anonymous"
           />
           <link
-            rel='preload'
-            href='https://cdn.jsdelivr.net/gh/conor-ob/club-league@latest/apps/cdn/font/inter-medium.otf'
-            as='font'
-            type='font/otf'
-            crossOrigin='anonymous'
+            rel="preload"
+            href="https://cdn.jsdelivr.net/gh/conor-ob/club-league@latest/apps/cdn/font/inter-medium.otf"
+            as="font"
+            type="font/otf"
+            crossOrigin="anonymous"
           />
           <link
-            rel='preload'
-            href='https://cdn.jsdelivr.net/gh/conor-ob/club-league@latest/apps/cdn/font/inter-semibold.otf'
-            as='font'
-            type='font/otf'
-            crossOrigin='anonymous'
+            rel="preload"
+            href="https://cdn.jsdelivr.net/gh/conor-ob/club-league@latest/apps/cdn/font/inter-semibold.otf"
+            as="font"
+            type="font/otf"
+            crossOrigin="anonymous"
           />
           <link
-            rel='preload'
-            href='https://cdn.jsdelivr.net/gh/conor-ob/club-league@latest/apps/cdn/font/inter-bold.otf'
-            as='font'
-            type='font/otf'
-            crossOrigin='anonymous'
+            rel="preload"
+            href="https://cdn.jsdelivr.net/gh/conor-ob/club-league@latest/apps/cdn/font/inter-bold.otf"
+            as="font"
+            type="font/otf"
+            crossOrigin="anonymous"
           />
         </Head>
-        <body className='bg-[#f6f6f6] dark:bg-[#010101]'>
+        <body className="bg-[#f6f6f6] dark:bg-[#010101]">
           <Main />
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 
-export default Document
+export default Document;

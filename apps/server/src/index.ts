@@ -1,90 +1,93 @@
-import { readFileSync } from 'node:fs'
-import http from 'node:http'
-import path from 'node:path'
-import { parse } from 'node:url'
-import { ApolloServer } from '@apollo/server'
-import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
+import { readFileSync } from "node:fs";
+import http from "node:http";
+import path from "node:path";
+import { parse } from "node:url";
+import { ApolloServer } from "@apollo/server";
+import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
 import {
   ApolloServerPluginLandingPageLocalDefault,
-  ApolloServerPluginLandingPageProductionDefault
-} from '@apollo/server/plugin/landingPage/default'
-import { expressMiddleware } from '@as-integrations/express4'
-import { config } from '@club-league/config'
-import cors from 'cors'
-import { default as compression, default as express } from 'express'
-import next from 'next'
-import type { ServerContext } from './context/ServerContext'
-import { Database } from './database/Database'
-import { FileReader } from './database/FileReader'
-import { GcMapper } from './mapping/GcMapper'
-import { StageMapper } from './mapping/StageMapper'
-import { StageResultsMapper } from './mapping/StageResultsMapper'
-import { resolvers } from './resolvers'
-import { GcService } from './service/GcService'
-import { MarshallsService } from './service/MarshallsService'
-import { RedirectService } from './service/RedirectService'
-import { RoutesService } from './service/RoutesService'
-import { StageResultsService } from './service/StageResultsService'
-import { StagesService } from './service/StagesService'
+  ApolloServerPluginLandingPageProductionDefault,
+} from "@apollo/server/plugin/landingPage/default";
+import { expressMiddleware } from "@as-integrations/express4";
+import { config } from "@club-league/config";
+import cors from "cors";
+import { default as compression, default as express } from "express";
+import next from "next";
+import type { ServerContext } from "./context/ServerContext";
+import { Database } from "./database/Database";
+import { FileReader } from "./database/FileReader";
+import { GcMapper } from "./mapping/GcMapper";
+import { StageMapper } from "./mapping/StageMapper";
+import { StageResultsMapper } from "./mapping/StageResultsMapper";
+import { resolvers } from "./resolvers";
+import { GcService } from "./service/GcService";
+import { MarshallsService } from "./service/MarshallsService";
+import { RedirectService } from "./service/RedirectService";
+import { RoutesService } from "./service/RoutesService";
+import { StageResultsService } from "./service/StageResultsService";
+import { StagesService } from "./service/StagesService";
 
 function startServer() {
-  const server = express()
-  const httpServer = http.createServer(server)
+  const server = express();
+  const httpServer = http.createServer(server);
 
   const application = next({
-    dev: process.env.NODE_ENV !== 'production',
+    dev: process.env.NODE_ENV !== "production",
     hostname: config.hostname,
-    port: config.port
-  })
-  const handleNextRequest = application.getRequestHandler()
+    port: config.port,
+  });
+  const handleNextRequest = application.getRequestHandler();
 
   application
     .prepare()
     .then(async () => {
       const apollo = new ApolloServer<ServerContext>({
         typeDefs: readFileSync(
-          path.resolve(process.cwd(), './src/generated/schema.graphql'),
+          path.resolve(process.cwd(), "./src/generated/schema.graphql"),
           {
-            encoding: 'utf-8'
-          }
+            encoding: "utf-8",
+          },
         ),
         resolvers,
         plugins: [
           ApolloServerPluginDrainHttpServer({ httpServer }),
-          process.env.NODE_ENV === 'production'
+          process.env.NODE_ENV === "production"
             ? ApolloServerPluginLandingPageProductionDefault({
-                footer: false
+                footer: false,
               })
-            : ApolloServerPluginLandingPageLocalDefault()
-        ]
-      })
-      await apollo.start()
+            : ApolloServerPluginLandingPageLocalDefault(),
+        ],
+      });
+      await apollo.start();
 
-      server.use(compression())
+      server.use(compression());
       server.use(
-        '/graphql',
+        "/graphql",
         cors({ origin: config.allowedOrigins }),
         express.json(),
         expressMiddleware(apollo, {
           context: async () => {
-            const fileReader = new FileReader()
-            const database = new Database(fileReader)
+            const fileReader = new FileReader();
+            const database = new Database(fileReader);
 
-            const stageMapper = new StageMapper(database)
-            const stageResultsMapper = new StageResultsMapper(database)
-            const gcMapper = new GcMapper(database)
+            const stageMapper = new StageMapper(database);
+            const stageResultsMapper = new StageResultsMapper(database);
+            const gcMapper = new GcMapper(database);
 
-            const stagesService = new StagesService(database, stageMapper)
-            const gcService = new GcService(database, gcMapper, stagesService)
+            const stagesService = new StagesService(database, stageMapper);
+            const gcService = new GcService(database, gcMapper, stagesService);
             const stageResultsService = new StageResultsService(
               database,
               stageResultsMapper,
               stagesService,
-              gcService
-            )
-            const marshallsService = new MarshallsService(database)
-            const routesService = new RoutesService(database)
-            const redirectService = new RedirectService(database, stagesService)
+              gcService,
+            );
+            const marshallsService = new MarshallsService(database);
+            const routesService = new RoutesService(database);
+            const redirectService = new RedirectService(
+              database,
+              stagesService,
+            );
 
             return {
               gcService: gcService,
@@ -92,45 +95,45 @@ function startServer() {
               routesService: routesService,
               stageResultsService: stageResultsService,
               stagesService: stagesService,
-              redirectService: redirectService
-            }
-          }
-        })
-      )
+              redirectService: redirectService,
+            };
+          },
+        }),
+      );
 
-      server.get('/healthcheck', (_, res) => {
+      server.get("/healthcheck", (_, res) => {
         const healthcheck = {
-          message: 'OK',
+          message: "OK",
           uptime: process.uptime(),
-          timestamp: Date.now()
-        }
+          timestamp: Date.now(),
+        };
         try {
-          res.status(200).send(healthcheck)
+          res.status(200).send(healthcheck);
         } catch {
-          res.status(503).send()
+          res.status(503).send();
         }
-      })
+      });
 
-      server.get('*', (req, res) =>
-        handleNextRequest(req, res, parse(req.url, true))
-      )
+      server.get("*", (req, res) =>
+        handleNextRequest(req, res, parse(req.url, true)),
+      );
 
       await new Promise<void>((resolve) =>
-        httpServer.listen({ port: config.port }, resolve)
-      )
+        httpServer.listen({ port: config.port }, resolve),
+      );
 
       console.log(
         `🚀 Server ready at ${
-          process.env.NODE_ENV === 'production' ? 'https' : 'http'
-        }://${config.hostname}:${config.port}`
-      )
+          process.env.NODE_ENV === "production" ? "https" : "http"
+        }://${config.hostname}:${config.port}`,
+      );
     })
     .catch((e) => {
-      console.error('Error starting server', e)
-    })
+      console.error("Error starting server", e);
+    });
 
-  return server
+  return server;
 }
 
-const server = startServer()
-export const viteNodeApp = server
+const server = startServer();
+export const viteNodeApp = server;

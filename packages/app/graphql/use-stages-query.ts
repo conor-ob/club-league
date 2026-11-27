@@ -1,5 +1,5 @@
-import { useQuery } from '@apollo/client'
-import { graphql } from '../generated'
+import { useQuery } from "@apollo/client";
+import { graphql } from "../generated";
 
 const stagesQuery = graphql(`
   query Stages($seasonId: ID) {
@@ -30,11 +30,11 @@ const stagesQuery = graphql(`
       info
     }
   }
-`)
+`);
 
 export function useStagesQuery(seasonId?: string) {
   return useQuery(stagesQuery, {
     variables: { seasonId: seasonId },
-    notifyOnNetworkStatusChange: true
-  })
+    notifyOnNetworkStatusChange: true,
+  });
 }

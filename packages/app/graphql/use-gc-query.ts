@@ -1,5 +1,5 @@
-import { useQuery } from '@apollo/client'
-import { graphql } from '../generated'
+import { useQuery } from "@apollo/client";
+import { graphql } from "../generated";
 
 const gcQuery = graphql(`
   query Gc($stageId: ID!) {
@@ -59,12 +59,12 @@ const gcQuery = graphql(`
       info
     }
   }
-`)
+`);
 
 export function useGcQuery({ stageId }: { stageId: string }) {
   return useQuery(gcQuery, {
     variables: { stageId: stageId },
     notifyOnNetworkStatusChange: true,
-    skip: stageId === undefined
-  })
+    skip: stageId === undefined,
+  });
 }

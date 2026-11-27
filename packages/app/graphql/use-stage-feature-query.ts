@@ -1,5 +1,5 @@
-import { useQuery } from '@apollo/client'
-import { graphql } from '../generated'
+import { useQuery } from "@apollo/client";
+import { graphql } from "../generated";
 
 const stageFeatureQuery = graphql(`
   query StageFeatureQuery($stageId: ID!) {
@@ -39,17 +39,17 @@ const stageFeatureQuery = graphql(`
       type
     }
   }
-`)
+`);
 
 type StageFeatureQueryProps = {
-  seasonId?: string
-  stageId: string
-}
+  seasonId?: string;
+  stageId: string;
+};
 
 export function useStageFeatureQuery({ stageId }: StageFeatureQueryProps) {
   return useQuery(stageFeatureQuery, {
     variables: { stageId: stageId },
     notifyOnNetworkStatusChange: true,
-    skip: stageId === undefined
-  })
+    skip: stageId === undefined,
+  });
 }

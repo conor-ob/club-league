@@ -1,29 +1,29 @@
-import { Card } from 'app/components/card/card'
-import { CardDivider } from 'app/components/card/card-divider'
-import { HeroIcon } from 'app/components/icon/heroicon'
-import { Column } from 'app/components/layout/column'
-import { Row } from 'app/components/layout/row'
-import { colors } from 'app/design/colors'
-import { type Route, RouteType } from 'app/generated/graphql'
-import cx from 'classnames'
+import { Card } from "app/components/card/card";
+import { CardDivider } from "app/components/card/card-divider";
+import { HeroIcon } from "app/components/icon/heroicon";
+import { Column } from "app/components/layout/column";
+import { Row } from "app/components/layout/row";
+import { colors } from "app/design/colors";
+import { type Route, RouteType } from "app/generated/graphql";
+import cx from "classnames";
 import {
   FlatList,
   Text,
   TouchableOpacity,
   useColorScheme,
-  View
-} from 'react-native'
-import { Link } from 'solito/link'
+  View,
+} from "react-native";
+import { Link } from "solito/link";
 
 export function StageRoutes({ routes }: { routes: Route[] }) {
-  const colorScheme = useColorScheme()
+  const colorScheme = useColorScheme();
 
   return (
     <Column>
-      <Text className='text-primary font-inter-medium ml-4 text-xl'>
+      <Text className="text-primary font-inter-medium ml-4 text-xl">
         Routes
       </Text>
-      <View className='h-2' />
+      <View className="h-2" />
       <Card>
         <FlatList
           data={routes}
@@ -32,26 +32,26 @@ export function StageRoutes({ routes }: { routes: Route[] }) {
           renderItem={({ item }) => (
             <TouchableOpacity>
               <Link href={`https://www.strava.com/routes/${item.id}`}>
-                <Row className='justify-between p-4'>
-                  <Text className='text-primary font-inter-medium text-base'>
+                <Row className="justify-between p-4">
+                  <Text className="text-primary font-inter-medium text-base">
                     {item.label}
                   </Text>
                   <Row>
                     <Text
                       className={cx(
-                        'font-inter-regular text-base',
-                        getTextClassName({ type: item.type })
+                        "font-inter-regular text-base",
+                        getTextClassName({ type: item.type }),
                       )}
                     >
                       Strava
                     </Text>
-                    <View className='w-2' />
+                    <View className="w-2" />
                     <HeroIcon
-                      name={'chevron-right'}
+                      name={"chevron-right"}
                       color={
                         item.type === RouteType.Strava
-                          ? colors[colorScheme ?? 'light'].brandStrava
-                          : colors[colorScheme ?? 'light'].textColorSecondary
+                          ? colors[colorScheme ?? "light"].brandStrava
+                          : colors[colorScheme ?? "light"].textColorSecondary
                       }
                       size={24}
                     />
@@ -63,13 +63,13 @@ export function StageRoutes({ routes }: { routes: Route[] }) {
         />
       </Card>
     </Column>
-  )
+  );
 }
 
 function getTextClassName({ type }: { type: RouteType }): string {
   if (type === RouteType.Strava) {
-    return 'text-brand-strava'
+    return "text-brand-strava";
   } else {
-    return 'text-secondary'
+    return "text-secondary";
   }
 }

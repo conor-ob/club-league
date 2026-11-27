@@ -1,18 +1,18 @@
-import { stageNumberFromStageId } from '@club-league/utils'
-import { GcBadge } from 'app/components/gc/gc-badge'
-import { Stack, useGlobalSearchParams } from 'expo-router'
-import { Text, View } from 'react-native'
+import { stageNumberFromStageId } from "@club-league/utils";
+import { GcBadge } from "app/components/gc/gc-badge";
+import { Stack, useGlobalSearchParams } from "expo-router";
+import { Text, View } from "react-native";
 
 export default function Layout() {
-  const { id } = useGlobalSearchParams<{ id: string }>()
+  const { id } = useGlobalSearchParams<{ id: string }>();
 
   return (
     <Stack>
       <Stack.Screen
-        name='index'
+        name="index"
         options={{
-          title: 'GC',
-          headerTitle: () => <GcBadge />
+          title: "GC",
+          headerTitle: () => <GcBadge />,
           // headerLargeTitle: true,
           // headerShadowVisible: true,
           // headerSearchBarOptions:
@@ -37,20 +37,20 @@ export default function Layout() {
         }}
       />
       <Stack.Screen
-        name='[id]'
+        name="[id]"
         options={{
-          title: id ? `Stage ${stageNumberFromStageId(id)}` : 'GC',
+          title: id ? `Stage ${stageNumberFromStageId(id)}` : "GC",
           headerTitle: () => (
-            <View className='flex flex-row items-center'>
+            <View className="flex flex-row items-center">
               <GcBadge />
               {id && (
-                <Text className='text-primary font-inter-semibold ml-2 text-lg'>{`Stage ${stageNumberFromStageId(id)}`}</Text>
+                <Text className="text-primary font-inter-semibold ml-2 text-lg">{`Stage ${stageNumberFromStageId(id)}`}</Text>
               )}
             </View>
           ),
-          animation: 'fade'
+          animation: "fade",
         }}
       />
     </Stack>
-  )
+  );
 }

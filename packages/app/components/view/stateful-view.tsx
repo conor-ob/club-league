@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react'
-import { View } from 'react-native'
+import type { ReactNode } from "react";
+import { View } from "react-native";
 
 export function StatefulView({
   displayLoading,
@@ -7,14 +7,14 @@ export function StatefulView({
   displayData,
   loadingView,
   errorView,
-  dataView
+  dataView,
 }: {
-  displayLoading: boolean
-  displayError: boolean
-  displayData: boolean
-  loadingView: ReactNode
-  errorView: ReactNode
-  dataView: ReactNode
+  displayLoading: boolean;
+  displayError: boolean;
+  displayData: boolean;
+  loadingView: ReactNode;
+  errorView: ReactNode;
+  dataView: ReactNode;
 }) {
   return displayLoading ? (
     loadingView
@@ -24,5 +24,5 @@ export function StatefulView({
     dataView
   ) : (
     <View />
-  )
+  );
 }

@@ -1,13 +1,13 @@
-import { Image } from 'react-native'
+import { Image } from "react-native";
 
 export function YellowJersey() {
   return (
     <Image
-      className='h-8 w-8'
+      className="h-8 w-8"
       source={{
-        uri: 'https://cdn.jsdelivr.net/gh/conor-ob/club-league@latest/apps/cdn/image/yellow-jersey.png'
+        uri: "https://cdn.jsdelivr.net/gh/conor-ob/club-league@latest/apps/cdn/image/yellow-jersey.png",
       }}
-      alt='yellow-jersey'
+      alt="yellow-jersey"
     />
-  )
+  );
 }
