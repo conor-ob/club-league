@@ -1,5 +1,3 @@
-# Railway config as code baseline. Source of truth: conor-ob/hq templates/railway/deploy.yaml
-# Policy and the reason behind each line: conor-ob/hq docs/railway-deploy.md
 name: 🚂 Deploy
 
 # Plan runs on PRs and pins the plan as an artifact. Apply runs on merge and
