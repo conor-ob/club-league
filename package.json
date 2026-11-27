@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@biomejs/biome": "2.6.8",
     "@types/react": "^18.2.21",
     "@types/react-native": "^0.72.2",
     "eslint": "^8.21.0",
