@@ -15,11 +15,9 @@ export { CustomRefreshControl as RefreshControl };
 // function setCustomFlatListWeb(options) {
 //   FlatList.defaultProps = {
 //     ...FlatList.defaultProps,
-//     //eslint-disable-next-line react/display-name
 //     renderScrollComponent: props => (
 //       <ScrollView
 //         {...props}
-//         //eslint-disable-next-line react/prop-types
 //         refreshControl={<CustomRefreshControl {...options} refreshing={props.refreshing} onRefresh={props.onRefresh} />}
 //       />
 //     ),

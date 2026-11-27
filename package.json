@@ -9,7 +9,6 @@
     "@biomejs/biome": "2.6.8",
     "@types/react": "^18.2.21",
     "@types/react-native": "^0.72.2",
-    "eslint": "^8.21.0",
     "railway": "^3.16.0",
     "turbo": "^1.4.2",
     "typescript": "^5.2.2"
@@ -20,6 +19,8 @@
     "dev": "turbo run dev",
     "start": "turbo run start",
     "typecheck": "turbo run typecheck",
+    "lint": "biome check .",
+    "format": "biome check --write .",
     "test": "echo \"No tests yet\""
   },
   "resolutions": {
