@@ -2975,25 +2975,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@club-league/results@workspace:apps/results"
   dependencies:
-    "@club-league/config": "*"
-    "@club-league/utils": "*"
-    "@types/body-parser": ^1.19.5
-    "@types/cors": ^2.8.17
-    "@types/express": ^4.17.21
+    "@types/lodash": ^4.17.0
     "@types/node": ^24.19.2
     "@types/papaparse": ^5.3.14
-    body-parser: ^1.20.9
-    cors: ^2.8.5
-    cross-env: ^7.0.3
-    date-fns: ^3.2.0
-    express: ^4.22.0
-    globby: 11.0.4
-    graphql: ^16.11.0
+    lodash: ^4.18.1
     papaparse: ^5.4.1
     ts-node: ^10.9.2
     typescript: ^5.3.3
-    vite: ^6.4.5
-    vite-plugin-node: ^3.1.0
   languageName: unknown
   linkType: soft
 
@@ -5846,7 +5834,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/body-parser@npm:*, @types/body-parser@npm:^1.19.5":
+"@types/body-parser@npm:*":
   version: 1.19.5
   resolution: "@types/body-parser@npm:1.19.5"
   dependencies:
@@ -7351,7 +7339,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"body-parser@npm:^1.20.9, body-parser@npm:~1.20.5":
+"body-parser@npm:^2.2.2":
+  version: 2.4.0
+  resolution: "body-parser@npm:2.4.0"
+  dependencies:
+    bytes: ^3.1.2
+    content-type: ^2.1.0
+    debug: ^4.4.3
+    http-errors: ^2.0.1
+    iconv-lite: ^0.7.3
+    on-finished: ^2.4.1
+    qs: ^6.16.1
+    raw-body: ^3.0.2
+    type-is: ^2.1.0
+  checksum: 8bc5ec22f24aecaf721570c6850e22b20dea844241b18cee6db6480839c10c77656c5c47f92ff228cb3510a3d5a9693184c1f03b0ea013b83dff82cab90cb270
+  languageName: node
+  linkType: hard
+
+"body-parser@npm:~1.20.5":
   version: 1.20.9
   resolution: "body-parser@npm:1.20.9"
   dependencies:
@@ -7368,23 +7373,6 @@ __metadata:
     type-is: ~1.6.18
     unpipe: ~1.0.0
   checksum: c3ef15619b0fb8538fb8c02737011ad07b942c6fc87604a5c92e01e239d80244383820ac63f394eb7f25b5ca07a7acc9406bb4e02d57923da6b69083bbcb6fdf
-  languageName: node
-  linkType: hard
-
-"body-parser@npm:^2.2.2":
-  version: 2.4.0
-  resolution: "body-parser@npm:2.4.0"
-  dependencies:
-    bytes: ^3.1.2
-    content-type: ^2.1.0
-    debug: ^4.4.3
-    http-errors: ^2.0.1
-    iconv-lite: ^0.7.3
-    on-finished: ^2.4.1
-    qs: ^6.16.1
-    raw-body: ^3.0.2
-    type-is: ^2.1.0
-  checksum: 8bc5ec22f24aecaf721570c6850e22b20dea844241b18cee6db6480839c10c77656c5c47f92ff228cb3510a3d5a9693184c1f03b0ea013b83dff82cab90cb270
   languageName: node
   linkType: hard
 
