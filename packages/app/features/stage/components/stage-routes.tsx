@@ -10,8 +10,8 @@ import {
   FlatList,
   Text,
   TouchableOpacity,
-  View,
-  useColorScheme
+  useColorScheme,
+  View
 } from 'react-native'
 import { Link } from 'solito/link'
 

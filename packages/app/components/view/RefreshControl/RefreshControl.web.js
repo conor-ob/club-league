@@ -3,11 +3,11 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import {
   ActivityIndicator,
   Animated,
+  findNodeHandle,
   PanResponder,
   Text,
-  View,
-  findNodeHandle,
-  useColorScheme
+  useColorScheme,
+  View
 } from 'react-native'
 
 const arrowIconLight =

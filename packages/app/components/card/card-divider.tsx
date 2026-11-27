@@ -1,4 +1,4 @@
-import { StyleSheet, View, useColorScheme } from 'react-native'
+import { StyleSheet, useColorScheme, View } from 'react-native'
 import { colors } from '../../design/colors'
 
 export function CardDivider() {

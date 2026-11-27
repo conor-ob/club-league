@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View, useColorScheme } from 'react-native'
+import { Text, TouchableOpacity, useColorScheme, View } from 'react-native'
 import { Link } from 'solito/link'
 import { IconBadge } from '../../components/badge/icon-badge'
 import { HeroIcon } from '../../components/icon/heroicon'

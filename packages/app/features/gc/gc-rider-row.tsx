@@ -1,7 +1,7 @@
-import { YellowJersey } from '../../components/image/yellow-jersey'
 // import { Ionicon } from '../components/ionicon'
-import { Text, View, useColorScheme } from 'react-native'
+import { Text, useColorScheme, View } from 'react-native'
 import { HeroIcon } from '../../components/icon/heroicon'
+import { YellowJersey } from '../../components/image/yellow-jersey'
 import { colors } from '../../design/colors'
 import { GcRider } from '../../generated/graphql'
 

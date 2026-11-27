@@ -1,4 +1,4 @@
-import { TouchableOpacity, View, useColorScheme } from 'react-native'
+import { TouchableOpacity, useColorScheme, View } from 'react-native'
 import { Link } from 'solito/link'
 import { Card } from '../../components/card/card'
 import { HeroIcon } from '../../components/icon/heroicon'

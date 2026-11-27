@@ -1,6 +1,6 @@
 import { RefreshScrollView } from 'app/components/view/refresh-scroll-view'
 import cx from 'classnames'
-import { FlatList, Text, View, useColorScheme } from 'react-native'
+import { FlatList, Text, useColorScheme, View } from 'react-native'
 import { createParam } from 'solito'
 import { Card } from '../../components/card/card'
 import { CardDivider } from '../../components/card/card-divider'

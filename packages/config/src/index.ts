@@ -1,9 +1,7 @@
 const production = {
   hostname: '0.0.0.0',
   port: 8080,
-  allowedOrigins: [
-    'https://clubleague.conorob.me'
-  ],
+  allowedOrigins: ['https://clubleague.conorob.me'],
   graphqlUri: 'https://clubleague.conorob.me/graphql'
 }
 

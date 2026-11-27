@@ -1,7 +1,7 @@
 import SegmentedControl from '@react-native-segmented-control/segmented-control'
 import { GenericErrorView } from 'app/components/view/generic-error-view'
 import { RefreshScrollView } from 'app/components/view/refresh-scroll-view'
-import { View, useColorScheme } from 'react-native'
+import { useColorScheme, View } from 'react-native'
 import { createParam } from 'solito'
 import { Skeleton } from '../../components/loading/skeleton'
 import { colors } from '../../design/colors'

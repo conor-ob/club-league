@@ -6,7 +6,7 @@ import { colors } from 'app/design/colors'
 import { Stage } from 'app/generated/graphql'
 import useAppleDevice from 'app/hooks/use-apple-device'
 import useScreenSize from 'app/hooks/use-screen-size'
-import { Text, TouchableOpacity, View, useColorScheme } from 'react-native'
+import { Text, TouchableOpacity, useColorScheme, View } from 'react-native'
 import { Link } from 'solito/link'
 
 export function StageMap({ stage }: { stage: Stage }) {

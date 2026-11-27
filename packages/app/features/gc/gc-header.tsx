@@ -1,4 +1,4 @@
-import { Text, View, useColorScheme } from 'react-native'
+import { Text, useColorScheme, View } from 'react-native'
 import { HeroIcon } from '../../components/icon/heroicon'
 import { Row } from '../../components/layout/row'
 import { colors } from '../../design/colors'

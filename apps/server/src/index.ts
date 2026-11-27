@@ -1,10 +1,10 @@
 import { ApolloServer } from '@apollo/server'
-import { expressMiddleware } from '@as-integrations/express4'
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
 import {
   ApolloServerPluginLandingPageLocalDefault,
   ApolloServerPluginLandingPageProductionDefault
 } from '@apollo/server/plugin/landingPage/default'
+import { expressMiddleware } from '@as-integrations/express4'
 import { config } from '@club-league/config'
 import cors from 'cors'
 import { default as compression, default as express } from 'express'

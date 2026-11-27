@@ -1,6 +1,6 @@
 import { default as Ionicons } from '@expo/vector-icons/Ionicons'
 import { format, parseISO } from 'date-fns'
-import { Text, View, useColorScheme } from 'react-native'
+import { Text, useColorScheme, View } from 'react-native'
 import { IconBadge } from '../../components/badge/icon-badge'
 import { Column } from '../../components/layout/column'
 import { colors } from '../../design/colors'

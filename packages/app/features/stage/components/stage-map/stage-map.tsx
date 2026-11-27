@@ -6,8 +6,8 @@ import {
   Platform,
   Text,
   TouchableOpacity,
-  View,
-  useColorScheme
+  useColorScheme,
+  View
 } from 'react-native'
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 import { MapMarker } from '../map-marker'

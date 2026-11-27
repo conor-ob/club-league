@@ -2,8 +2,8 @@ import {
   ArrowDown,
   ArrowLongLeft,
   ArrowLongRight,
-  ArrowUp,
   ArrowsUpDown,
+  ArrowUp,
   ChevronRight,
   Trophy
 } from '@nandorojo/heroicons/24/outline'

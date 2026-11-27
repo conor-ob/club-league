@@ -1,13 +1,10 @@
+import { seasonIdFromStageId, stageNumberFromStageId } from '@club-league/utils'
 import { Popover, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
   ChevronLeftIcon,
   XMarkIcon
 } from '@heroicons/react/24/outline'
-import {
-  seasonIdFromStageId,
-  stageNumberFromStageId
-} from '@club-league/utils'
 import { GcBadge } from 'app/components/gc/gc-badge'
 import { Skeleton } from 'app/components/loading/skeleton'
 import { useRedirectQuery } from 'app/graphql/use-redirect-query'

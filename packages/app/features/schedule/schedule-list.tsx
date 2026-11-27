@@ -6,7 +6,7 @@ import {
   parseISO
 } from 'date-fns'
 import { useState } from 'react'
-import { View, useColorScheme } from 'react-native'
+import { useColorScheme, View } from 'react-native'
 import { CardListHeader } from '../../components/card/card-list-header'
 import { colors } from '../../design/colors'
 import { ScheduleListCard } from './schedule-list-card'

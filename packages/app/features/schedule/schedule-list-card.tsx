@@ -1,5 +1,3 @@
-import { Card } from '../../components/card/card'
-import { CardDivider } from '../../components/card/card-divider'
 // import { Ionicon } from '@/components/ionicon'
 // import { Link } from 'expo-router'
 import { Column } from 'app/components/layout/column'
@@ -7,10 +5,12 @@ import {
   FlatList,
   Text,
   TouchableOpacity,
-  View,
-  useColorScheme
+  useColorScheme,
+  View
 } from 'react-native'
 import { Link } from 'solito/link'
+import { Card } from '../../components/card/card'
+import { CardDivider } from '../../components/card/card-divider'
 import { HeroIcon } from '../../components/icon/heroicon'
 import { Row } from '../../components/layout/row'
 import { colors } from '../../design/colors'

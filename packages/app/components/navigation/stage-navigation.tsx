@@ -1,11 +1,8 @@
-import {
-  seasonIdFromStageId,
-  stageNumberFromStageId
-} from '@club-league/utils'
+import { seasonIdFromStageId, stageNumberFromStageId } from '@club-league/utils'
 import { Stage } from 'app/generated/graphql'
 import cx from 'classnames'
 import { useEffect } from 'react'
-import { Text, TouchableOpacity, View, useColorScheme } from 'react-native'
+import { Text, TouchableOpacity, useColorScheme, View } from 'react-native'
 import { createParam } from 'solito'
 import { Link } from 'solito/link'
 import { useRouter } from 'solito/router'
