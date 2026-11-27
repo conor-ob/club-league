@@ -4,7 +4,7 @@ import { IconBadge } from '../../components/badge/icon-badge'
 import { HeroIcon } from '../../components/icon/heroicon'
 import { YellowJersey } from '../../components/image/yellow-jersey'
 import { colors } from '../../design/colors'
-import { CategoryResults } from '../../generated/graphql'
+import type { CategoryResults } from '../../generated/graphql'
 
 // TODO nullable stageId
 type CategoryResultsListItemProps = {

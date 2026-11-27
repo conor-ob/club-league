@@ -20,17 +20,13 @@ export function ApolloClientProvider({ children }: ApolloProviderProps) {
   const delayLink = (delay = 1000) =>
     new ApolloLink((operation, forward) => {
       return new Observable((observer) => {
-        const getDelayedMethod =
-          (name: string) =>
-          (...args: any) => {
-            setTimeout(() => {
-              // @ts-ignore
-              observer[name](...args)
-            }, delay)
-          }
         const subscription = forward(operation).subscribe({
-          next: getDelayedMethod('next'),
-          error: getDelayedMethod('error')
+          next: (value) => {
+            setTimeout(() => observer.next(value), delay)
+          },
+          error: (error) => {
+            setTimeout(() => observer.error(error), delay)
+          }
         })
         return () => {
           if (subscription) subscription.unsubscribe()
@@ -40,7 +36,7 @@ export function ApolloClientProvider({ children }: ApolloProviderProps) {
 
   const errorLink = onError(({ graphQLErrors, networkError, operation }) => {
     if (graphQLErrors) {
-      graphQLErrors.forEach(({ message }) =>
+      graphQLErrors.forEach(({ message }) => {
         console.log(
           `[GraphQL error]: ${JSON.stringify(
             {
@@ -51,7 +47,7 @@ export function ApolloClientProvider({ children }: ApolloProviderProps) {
             2
           )}`
         )
-      )
+      })
     }
 
     if (networkError) {

@@ -1,7 +1,7 @@
+import path from 'node:path'
 import { idFromPath } from '@club-league/utils'
 import { sync } from 'globby'
-import path from 'path'
-import { FileReader } from './FileReader'
+import type { FileReader } from './FileReader'
 
 export class Database {
   private fileReader: FileReader

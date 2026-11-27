@@ -38,7 +38,7 @@ export function GcFeatureSkeleton() {
       <FlatList
         data={[1, 2, 3, 4, 5]}
         // scrollEnabled={false}
-        renderItem={({ item }) => (
+        renderItem={() => (
           <View className='py-7'>
             <Skeleton className='mx-2 h-3 rounded-md' />
           </View>

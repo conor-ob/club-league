@@ -1,5 +1,6 @@
 import { colors } from 'app/design/colors'
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
+import type React from 'react'
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 import { ScrollView, useColorScheme } from 'react-native'
 import { RefreshControl } from './RefreshControl'
 

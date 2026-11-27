@@ -116,6 +116,7 @@ const PWAInstallComponent = ({
         ('standalone' in navigator && navigator.standalone === true)
       ) && (
         <button
+          type='button'
           className='text-secondary text-sm font-inter-regular pt-0.5'
           onClick={() => pwaInstallRef.current.showDialog(true)}
         >

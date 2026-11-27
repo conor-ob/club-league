@@ -1,5 +1,5 @@
 import { seasonIdFromStageId, stageNumberFromStageId } from '@club-league/utils'
-import { Stage } from 'app/generated/graphql'
+import type { Stage } from 'app/generated/graphql'
 import cx from 'classnames'
 import { useEffect } from 'react'
 import { Text, TouchableOpacity, useColorScheme, View } from 'react-native'
@@ -28,7 +28,7 @@ export function StageNavigation({
 }) {
   const { params } = useParams()
   const colorScheme = useColorScheme()
-  const { data, loading, error } = useStagesQuery()
+  const { data, loading } = useStagesQuery()
   const { replace } = useRouter()
 
   const stageId = providedStageId ?? params.id
@@ -39,8 +39,8 @@ export function StageNavigation({
     }
   }, [stageId, data, replace])
 
-  let previousStageId: string | null | undefined = undefined
-  let nextStageId: string | null | undefined = undefined
+  let previousStageId: string | null | undefined
+  let nextStageId: string | null | undefined
   if (data?.stages) {
     const stageIds = data.stages.map((it) => it.id)
 
@@ -169,6 +169,6 @@ function shouldRedirect({
   if (id === undefined || stages === undefined || stages.length === 0) {
     return false
   } else {
-    return seasonIdFromStageId(stages[0]!.id) != seasonIdFromStageId(id)
+    return seasonIdFromStageId(stages[0]!.id) !== seasonIdFromStageId(id)
   }
 }

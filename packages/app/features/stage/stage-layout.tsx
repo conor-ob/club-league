@@ -1,10 +1,10 @@
-import { default as Ionicons } from '@expo/vector-icons/Ionicons'
+import type { default as Ionicons } from '@expo/vector-icons/Ionicons'
 import { format, parseISO } from 'date-fns'
 import { Text, useColorScheme, View } from 'react-native'
 import { IconBadge } from '../../components/badge/icon-badge'
 import { Column } from '../../components/layout/column'
 import { colors } from '../../design/colors'
-import { Stage } from '../../generated/graphql'
+import type { Stage } from '../../generated/graphql'
 
 export function StageLayout({ stage }: { stage: Stage }) {
   const colorScheme = useColorScheme()

@@ -6,7 +6,7 @@ import { AppRegistry } from 'react-native'
 class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext) {
     AppRegistry.registerComponent('Main', () => Main)
-    // @ts-ignore
+    // @ts-expect-error
     const { getStyleElement } = AppRegistry.getApplication('Main')
     const styles = [getStyleElement()]
 

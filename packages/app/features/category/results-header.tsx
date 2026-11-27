@@ -1,8 +1,7 @@
-import { Text, useColorScheme } from 'react-native'
+import { Text } from 'react-native'
 import { Row } from '../../components/layout/row'
 
 export function ResultsHeader() {
-  const colorScheme = useColorScheme()
   return (
     <Row className='justify-between px-2'>
       <Row>

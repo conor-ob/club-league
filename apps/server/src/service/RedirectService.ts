@@ -1,9 +1,9 @@
 import { seasonIdFromStageId, stageNumberFromStageId } from '@club-league/utils'
 import { isAfter, parseISO } from 'date-fns'
-import { Database } from '../database/Database'
+import type { Database } from '../database/Database'
 import { Table } from '../database/Table'
-import { Redirects } from '../generated/graphql'
-import { StagesService } from './StagesService'
+import type { Redirects } from '../generated/graphql'
+import type { StagesService } from './StagesService'
 
 export class RedirectService {
   private database: Database

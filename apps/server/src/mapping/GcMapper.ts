@@ -1,15 +1,15 @@
 import { stageNumberFromStageId } from '@club-league/utils'
-import { Database } from '../database/Database'
+import type { Database } from '../database/Database'
 import { Table } from '../database/Table'
-import { StageResultEntity } from '../entity/StageResultEntity'
+import type { StageResultEntity } from '../entity/StageResultEntity'
 import {
-  Category,
-  Club,
-  Gc,
-  GcRider,
+  type Category,
+  type Club,
+  type Gc,
+  type GcRider,
   GcStatus,
   ResultsStatus,
-  Stage
+  type Stage
 } from '../generated/graphql'
 
 export class GcMapper {
@@ -98,7 +98,7 @@ export class GcMapper {
             }
           }
           return accumulator
-        }, new Array<GcRider>())
+        }, [] as GcRider[])
     }
   }
 

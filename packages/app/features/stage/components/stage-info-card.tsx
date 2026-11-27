@@ -1,11 +1,9 @@
 import { Card } from 'app/components/card/card'
 import { Column } from 'app/components/layout/column'
-import { Stage } from 'app/generated/graphql'
-import { FlatList, Text, useColorScheme, View } from 'react-native'
+import type { Stage } from 'app/generated/graphql'
+import { FlatList, Text, View } from 'react-native'
 
 export function StageInfoCard({ stage }: { stage: Stage }) {
-  const colorScheme = useColorScheme()
-
   return (
     <Column>
       <Text className='text-primary font-inter-medium ml-4 text-xl'>

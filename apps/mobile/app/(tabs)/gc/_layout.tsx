@@ -12,7 +12,7 @@ export default function Layout() {
         name='index'
         options={{
           title: 'GC',
-          headerTitle: ({ children, tintColor }) => <GcBadge />
+          headerTitle: () => <GcBadge />
           // headerLargeTitle: true,
           // headerShadowVisible: true,
           // headerSearchBarOptions:
@@ -40,7 +40,7 @@ export default function Layout() {
         name='[id]'
         options={{
           title: id ? `Stage ${stageNumberFromStageId(id)}` : 'GC',
-          headerTitle: ({ children, tintColor }) => (
+          headerTitle: () => (
             <View className='flex flex-row items-center'>
               <GcBadge />
               {id && (

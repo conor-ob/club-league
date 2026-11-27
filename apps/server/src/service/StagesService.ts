@@ -1,9 +1,9 @@
 import { stageNumberFromStageId } from '@club-league/utils'
-import { Database } from '../database/Database'
+import type { Database } from '../database/Database'
 import { Table } from '../database/Table'
-import { StageEntity } from '../entity/StageEntity'
-import { Stage } from '../generated/graphql'
-import { StageMapper } from '../mapping/StageMapper'
+import type { StageEntity } from '../entity/StageEntity'
+import type { Stage } from '../generated/graphql'
+import type { StageMapper } from '../mapping/StageMapper'
 
 export class StagesService {
   private database: Database

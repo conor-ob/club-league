@@ -8,7 +8,7 @@ import { YellowJersey } from '../../components/image/yellow-jersey'
 import { Column } from '../../components/layout/column'
 import { Row } from '../../components/layout/row'
 import { Skeleton } from '../../components/loading/skeleton'
-import { Stage } from '../../generated/graphql'
+import type { Stage } from '../../generated/graphql'
 import { useStageResultsQuery } from '../../graphql/use-stage-results-query'
 import { ResultsHeader } from './results-header'
 import { StageRiderComponent } from './stage-rider-component'
@@ -64,7 +64,7 @@ export function CategoryResultsFeature() {
           <FlatList
             data={[1, 2, 3, 4, 5]}
             // scrollEnabled={false}
-            renderItem={({ item }) => (
+            renderItem={() => (
               <View className='py-7'>
                 <Skeleton className='mx-2 h-3 rounded-md' />
               </View>

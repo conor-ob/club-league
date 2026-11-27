@@ -1,6 +1,7 @@
 import { themes } from 'app/design/colors'
 import { useColorScheme } from 'nativewind'
-import React, { createContext } from 'react'
+import type React from 'react'
+import { createContext } from 'react'
 import { View } from 'react-native'
 
 interface NativewindProviderProps {

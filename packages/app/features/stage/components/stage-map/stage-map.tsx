@@ -1,20 +1,11 @@
 import { stageNumberFromStageId } from '@club-league/utils'
 import { Card } from 'app/components/card/card'
-import { Stage } from 'app/generated/graphql'
-import {
-  Linking,
-  Platform,
-  Text,
-  TouchableOpacity,
-  useColorScheme,
-  View
-} from 'react-native'
+import type { Stage } from 'app/generated/graphql'
+import { Linking, Platform, Text, TouchableOpacity, View } from 'react-native'
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 import { MapMarker } from '../map-marker'
 
 export function StageMap({ stage }: { stage: Stage }) {
-  const colorScheme = useColorScheme()
-
   return (
     <Card>
       <View className='px-4 py-5'>

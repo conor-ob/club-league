@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { GcRider } from '../../generated/graphql'
+import type { GcRider } from '../../generated/graphql'
 import { GcRiderRow } from './gc-rider-row'
 
 type GcRiderComponentProps = {

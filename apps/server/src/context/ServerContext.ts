@@ -1,9 +1,9 @@
-import { GcService } from '../service/GcService'
-import { MarshallsService } from '../service/MarshallsService'
-import { RedirectService } from '../service/RedirectService'
-import { RoutesService } from '../service/RoutesService'
-import { StageResultsService } from '../service/StageResultsService'
-import { StagesService } from '../service/StagesService'
+import type { GcService } from '../service/GcService'
+import type { MarshallsService } from '../service/MarshallsService'
+import type { RedirectService } from '../service/RedirectService'
+import type { RoutesService } from '../service/RoutesService'
+import type { StageResultsService } from '../service/StageResultsService'
+import type { StagesService } from '../service/StagesService'
 
 export interface ServerContext {
   gcService: GcService

@@ -4,7 +4,7 @@ import { useRedirectQuery } from 'app/graphql/use-redirect-query'
 import { ScrollView } from 'react-native'
 
 export default function Index() {
-  const { loading, data, error, refetch } = useRedirectQuery({
+  const { data } = useRedirectQuery({
     seasonId: undefined
   })
 

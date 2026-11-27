@@ -1,3 +1,7 @@
+import { readFileSync } from 'node:fs'
+import http from 'node:http'
+import path from 'node:path'
+import { parse } from 'node:url'
 import { ApolloServer } from '@apollo/server'
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
 import {
@@ -8,12 +12,8 @@ import { expressMiddleware } from '@as-integrations/express4'
 import { config } from '@club-league/config'
 import cors from 'cors'
 import { default as compression, default as express } from 'express'
-import { readFileSync } from 'fs'
-import http from 'http'
 import next from 'next'
-import path from 'path'
-import { parse } from 'url'
-import { ServerContext } from './context/ServerContext'
+import type { ServerContext } from './context/ServerContext'
 import { Database } from './database/Database'
 import { FileReader } from './database/FileReader'
 import { GcMapper } from './mapping/GcMapper'
@@ -106,7 +106,7 @@ function startServer() {
         }
         try {
           res.status(200).send(healthcheck)
-        } catch (e) {
+        } catch {
           res.status(503).send()
         }
       })

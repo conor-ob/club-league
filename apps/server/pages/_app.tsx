@@ -3,7 +3,7 @@ import 'setimmediate'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Provider } from 'app/provider'
-import { AppProps } from 'next/app'
+import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Layout } from '../components/web-layout'
 

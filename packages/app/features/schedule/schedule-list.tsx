@@ -10,7 +10,7 @@ import { useColorScheme, View } from 'react-native'
 import { CardListHeader } from '../../components/card/card-list-header'
 import { colors } from '../../design/colors'
 import { ScheduleListCard } from './schedule-list-card'
-import { Schedule } from './schedule-types'
+import type { Schedule } from './schedule-types'
 
 type ScheduleListProps = {
   schedule: Schedule

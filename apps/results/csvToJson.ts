@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import Papa from 'papaparse'
-import { StageResultEntity } from '../server/src/entity/StageResultEntity'
+import type { StageResultEntity } from '../server/src/entity/StageResultEntity'
 
 // https://www.youpdf.com/pdf-to-excel.html
 

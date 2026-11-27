@@ -4,10 +4,10 @@ import { ScrollView } from 'react-native'
 import { useRouter } from 'solito/router'
 
 export default function ScheduleRedirect() {
-  const { loading, data, error, refetch } = useRedirectQuery({
+  const { data } = useRedirectQuery({
     seasonId: undefined
   })
-  const { push, replace, back, parseNextPath } = useRouter()
+  const { replace } = useRouter()
 
   useEffect(() => {
     if (data?.redirects.currentSeasonId) {

@@ -1,13 +1,13 @@
 import { addHours, parseISO } from 'date-fns'
-import { Database } from '../database/Database'
+import type { Database } from '../database/Database'
 import { Table } from '../database/Table'
-import { StageEntity } from '../entity/StageEntity'
+import type { StageEntity } from '../entity/StageEntity'
 import {
-  Category,
-  CategoryGroup,
-  Club,
+  type Category,
+  type CategoryGroup,
+  type Club,
   RaceType,
-  Stage,
+  type Stage,
   StageStatus
 } from '../generated/graphql'
 

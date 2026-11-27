@@ -1,12 +1,12 @@
 import { seasonIdFromStageId } from '@club-league/utils'
 import { differenceInHours, isAfter, parseISO } from 'date-fns'
-import { Database } from '../database/Database'
+import type { Database } from '../database/Database'
 import { Table } from '../database/Table'
-import { StageResultEntity } from '../entity/StageResultEntity'
-import { ResultsStatus, StageResults } from '../generated/graphql'
-import { StageResultsMapper } from '../mapping/StageResultsMapper'
-import { GcService } from './GcService'
-import { StagesService } from './StagesService'
+import type { StageResultEntity } from '../entity/StageResultEntity'
+import { ResultsStatus, type StageResults } from '../generated/graphql'
+import type { StageResultsMapper } from '../mapping/StageResultsMapper'
+import type { GcService } from './GcService'
+import type { StagesService } from './StagesService'
 
 export class StageResultsService {
   private database: Database

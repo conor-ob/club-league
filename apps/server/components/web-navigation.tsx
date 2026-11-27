@@ -1,3 +1,4 @@
+import type { ParsedUrlQuery } from 'node:querystring'
 import { seasonIdFromStageId, stageNumberFromStageId } from '@club-league/utils'
 import { Popover, Transition } from '@headlessui/react'
 import {
@@ -11,12 +12,12 @@ import { useRedirectQuery } from 'app/graphql/use-redirect-query'
 import cx from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import type { ParsedUrlQuery } from 'querystring'
-import React, { Fragment } from 'react'
+import type React from 'react'
+import { Fragment } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 
 export function Navigation() {
-  const { loading, data, error } = useRedirectQuery({ seasonId: undefined })
+  const { data } = useRedirectQuery({ seasonId: undefined })
   const navigation = [
     {
       name: 'GC',

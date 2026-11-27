@@ -1,6 +1,6 @@
-import { Database } from '../database/Database'
+import type { Database } from '../database/Database'
 import { Table } from '../database/Table'
-import { StageMarshalls } from '../generated/graphql'
+import type { StageMarshalls } from '../generated/graphql'
 
 export class MarshallsService {
   private database: Database

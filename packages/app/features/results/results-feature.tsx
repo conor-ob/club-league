@@ -1,7 +1,7 @@
 import { stageNumberFromStageId } from '@club-league/utils'
 import { GenericErrorView } from 'app/components/view/generic-error-view'
 import { RefreshScrollView } from 'app/components/view/refresh-scroll-view'
-import { FlatList, Text, useColorScheme, View } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
 import { createParam } from 'solito'
 import { Card } from '../../components/card/card'
 import { CardDivider } from '../../components/card/card-divider'
@@ -18,7 +18,6 @@ const { useParams } = createParam<{
 
 export function ResultsFeature() {
   const { params } = useParams()
-  const colorScheme = useColorScheme()
 
   const { loading, data, error, refetch } = useStageResultsQuery({
     stageId: params.id

@@ -4,7 +4,7 @@ import { Card } from '../../components/card/card'
 import { HeroIcon } from '../../components/icon/heroicon'
 import { Row } from '../../components/layout/row'
 import { colors } from '../../design/colors'
-import { Stage } from '../../generated/graphql'
+import type { Stage } from '../../generated/graphql'
 import { StageLayout } from './stage-layout'
 
 export function StageCard({ stage, href }: { stage: Stage; href?: string }) {

@@ -1,6 +1,6 @@
 import { format, parseISO } from 'date-fns'
-import { Stage, StageStatus } from '../../generated/graphql'
-import { Schedule } from './schedule-types'
+import { type Stage, StageStatus } from '../../generated/graphql'
+import type { Schedule } from './schedule-types'
 
 export function buildSchedule(stages: Stage[]): Schedule {
   const completed = Array.from(

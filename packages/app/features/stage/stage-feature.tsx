@@ -1,6 +1,6 @@
 import { GenericErrorView } from 'app/components/view/generic-error-view'
 import { RefreshScrollView } from 'app/components/view/refresh-scroll-view'
-import { useColorScheme, View } from 'react-native'
+import { View } from 'react-native'
 import { createParam } from 'solito'
 import { Skeleton } from '../../components/loading/skeleton'
 import { StageNavigation } from '../../components/navigation/stage-navigation'
@@ -17,7 +17,6 @@ const { useParams } = createParam<{
 
 export function StageFeature() {
   const { params } = useParams()
-  const colorScheme = useColorScheme()
 
   const { loading, data, error, refetch } = useStageFeatureQuery({
     stageId: params.id

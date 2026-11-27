@@ -1,12 +1,12 @@
-import { Database } from '../database/Database'
+import type { Database } from '../database/Database'
 import { Table } from '../database/Table'
-import { StageResultEntity } from '../entity/StageResultEntity'
+import type { StageResultEntity } from '../entity/StageResultEntity'
 import {
-  Category,
-  Club,
+  type Category,
+  type Club,
   ResultsStatus,
-  Stage,
-  StageResults
+  type Stage,
+  type StageResults
 } from '../generated/graphql'
 
 export class StageResultsMapper {

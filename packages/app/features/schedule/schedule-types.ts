@@ -1,4 +1,4 @@
-import { Stage } from '../../generated/graphql'
+import type { Stage } from '../../generated/graphql'
 
 export type Schedule = {
   nextStage?: Stage

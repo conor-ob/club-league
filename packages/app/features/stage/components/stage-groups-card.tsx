@@ -1,7 +1,7 @@
 import { Card } from 'app/components/card/card'
 import { CardDivider } from 'app/components/card/card-divider'
 import { Column } from 'app/components/layout/column'
-import { Stage } from 'app/generated/graphql'
+import type { Stage } from 'app/generated/graphql'
 import { FlatList, Text, View } from 'react-native'
 
 export function StageGroupsCard({ stage }: { stage: Stage }) {

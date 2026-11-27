@@ -1,6 +1,6 @@
-import { Database } from '../database/Database'
+import type { Database } from '../database/Database'
 import { Table } from '../database/Table'
-import { Route } from '../generated/graphql'
+import type { Route } from '../generated/graphql'
 
 export class RoutesService {
   private database: Database

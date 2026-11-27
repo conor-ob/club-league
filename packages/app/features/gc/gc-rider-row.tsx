@@ -3,7 +3,7 @@ import { Text, useColorScheme, View } from 'react-native'
 import { HeroIcon } from '../../components/icon/heroicon'
 import { YellowJersey } from '../../components/image/yellow-jersey'
 import { colors } from '../../design/colors'
-import { GcRider } from '../../generated/graphql'
+import type { GcRider } from '../../generated/graphql'
 
 type GcRiderRowProps = {
   gcRider: GcRider

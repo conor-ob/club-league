@@ -1,4 +1,4 @@
-import { QueryResolvers } from '../generated/graphql'
+import type { QueryResolvers } from '../generated/graphql'
 
 const Query: QueryResolvers = {
   gc: (_, { stageId }, { gcService }, ____) => {

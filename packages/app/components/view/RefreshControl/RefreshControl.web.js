@@ -125,7 +125,7 @@ export default function RefreshControl({
   )
 
   const refreshIndicatorColor = useMemo(
-    () => (tintColor ? tintColor : colors && colors.length ? colors[0] : null),
+    () => (tintColor ? tintColor : colors?.length ? colors[0] : null),
     [colors, tintColor]
   )
   const pullDownIconStyle = useMemo(
