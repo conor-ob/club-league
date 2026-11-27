@@ -1,4 +1,4 @@
 export interface MarshallsEntity {
-  stageId: string
-  marshalls: string[]
+  stageId: string;
+  marshalls: string[];
 }

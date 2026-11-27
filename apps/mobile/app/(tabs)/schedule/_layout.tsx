@@ -1,22 +1,22 @@
-import { Stack, useGlobalSearchParams } from 'expo-router'
+import { Stack, useGlobalSearchParams } from "expo-router";
 
 export default function Layout() {
-  const { id } = useGlobalSearchParams<{ id: string }>()
+  const { id } = useGlobalSearchParams<{ id: string }>();
 
   return (
     <Stack>
       <Stack.Screen
-        name='index'
+        name="index"
         options={{
-          title: 'Schedule'
+          title: "Schedule",
         }}
       />
       <Stack.Screen
-        name='[id]'
+        name="[id]"
         options={{
-          title: `Stage ${id?.split('-')[1]}`
+          title: `Stage ${id?.split("-")[1]}`,
         }}
       />
     </Stack>
-  )
+  );
 }

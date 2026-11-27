@@ -1,6 +1,6 @@
-import CustomRefreshControl from './RefreshControl'
+import CustomRefreshControl from "./RefreshControl";
 
-export { CustomRefreshControl as RefreshControl }
+export { CustomRefreshControl as RefreshControl };
 
 // export function patchFlatListProps(options = {}) {
 //   try {

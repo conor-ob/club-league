@@ -1,100 +1,100 @@
-import { YellowJersey } from '../../components/image/yellow-jersey'
 // import { Ionicon } from '../components/ionicon'
-import { Text, View, useColorScheme } from 'react-native'
-import { HeroIcon } from '../../components/icon/heroicon'
-import { colors } from '../../design/colors'
-import { GcRider } from '../../generated/graphql'
+import { Text, useColorScheme, View } from "react-native";
+import { HeroIcon } from "../../components/icon/heroicon";
+import { YellowJersey } from "../../components/image/yellow-jersey";
+import { colors } from "../../design/colors";
+import type { GcRider } from "../../generated/graphql";
 
 type GcRiderRowProps = {
-  gcRider: GcRider
-}
+  gcRider: GcRider;
+};
 
 export function GcRiderRow({ gcRider }: GcRiderRowProps) {
   return (
-    <View className='flex flex-row justify-between px-2 py-3'>
-      <View className='flex-1 flex-row items-center'>
+    <View className="flex flex-row justify-between px-2 py-3">
+      <View className="flex-1 flex-row items-center">
         <GcRiderPosition rank={gcRider.rank} position={gcRider.position} />
-        <View className='flex-1 px-2'>
-          <Text className='text-primary font-inter-regular text-base'>
+        <View className="flex-1 px-2">
+          <Text className="text-primary font-inter-regular text-base">
             {gcRider.rider.name}
           </Text>
-          <View className='h-1' />
-          <Text className='text-secondary font-inter-regular text-sm tracking-tight'>{`${gcRider.club.code} • ${gcRider.category.name}`}</Text>
+          <View className="h-1" />
+          <Text className="text-secondary font-inter-regular text-sm tracking-tight">{`${gcRider.club.code} • ${gcRider.category.name}`}</Text>
         </View>
       </View>
-      <View className='flex flex-row items-center'>
+      <View className="flex flex-row items-center">
         {/* This is needed for long names for some reason */}
         {/* <View className='w-12' /> */}
-        <View className='w-10'>
+        <View className="w-10">
           <GcRiderMovement movement={gcRider.movement} />
         </View>
-        <Text className='text-primary font-inter-medium w-10 text-center text-base'>
+        <Text className="text-primary font-inter-medium w-10 text-center text-base">
           {gcRider.gcPoints}
         </Text>
-        <Text className='text-secondary font-inter-regular w-10 text-center text-base'>
+        <Text className="text-secondary font-inter-regular w-10 text-center text-base">
           {gcRider.totalPoints}
         </Text>
       </View>
     </View>
-  )
+  );
 }
 
 type GcRiderPositionProps = {
-  rank: number
-  position: string
-}
+  rank: number;
+  position: string;
+};
 
 function GcRiderPosition({ rank, position }: GcRiderPositionProps) {
   if (rank === 1) {
     return (
-      <View className='w-10 items-center'>
+      <View className="w-10 items-center">
         <YellowJersey />
       </View>
-    )
+    );
   }
   return (
-    <Text className='text-secondary font-inter-regular w-10 text-center text-base'>
+    <Text className="text-secondary font-inter-regular w-10 text-center text-base">
       {position}
     </Text>
-  )
+  );
 }
 
 type GcRiderMovementProps = {
-  movement: number
-}
+  movement: number;
+};
 
 function GcRiderMovement({ movement }: GcRiderMovementProps) {
-  const colorScheme = useColorScheme()
+  const colorScheme = useColorScheme();
 
   if (movement === 0) {
-    return <View />
+    return <View />;
   } else if (movement > 0) {
     return (
-      <View className='flex flex-row items-center justify-center'>
-        <Text className='text-secondary font-inter-regular text-base'>
+      <View className="flex flex-row items-center justify-center">
+        <Text className="text-secondary font-inter-regular text-base">
           {movement}
         </Text>
-        <View className='w-1' />
+        <View className="w-1" />
         <HeroIcon
           size={18}
-          name='arrow-up'
-          color={colors[colorScheme ?? 'light'].brandGreen}
+          name="arrow-up"
+          color={colors[colorScheme ?? "light"].brandGreen}
         />
       </View>
-    )
+    );
   } else {
     return (
-      <View className='flex flex-row items-center justify-center'>
-        <Text className='text-secondary font-inter-regular text-sm'>
+      <View className="flex flex-row items-center justify-center">
+        <Text className="text-secondary font-inter-regular text-sm">
           {movement * -1}
         </Text>
-        <View className='w-1' />
+        <View className="w-1" />
         <HeroIcon
           size={18}
-          name='arrow-down'
-          color={colors[colorScheme ?? 'light'].brandRed}
+          name="arrow-down"
+          color={colors[colorScheme ?? "light"].brandRed}
         />
       </View>
-    )
+    );
   }
 }

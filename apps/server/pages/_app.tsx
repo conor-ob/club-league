@@ -1,21 +1,21 @@
-import 'raf/polyfill'
-import 'setimmediate'
+import "raf/polyfill";
+import "setimmediate";
 
-import { GoogleAnalytics } from '@next/third-parties/google'
-import { Provider } from 'app/provider'
-import { AppProps } from 'next/app'
-import Head from 'next/head'
-import { Layout } from '../components/web-layout'
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Provider } from "app/provider";
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import { Layout } from "../components/web-layout";
 
-import '../global.css'
+import "../global.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
         <title>Club League</title>
-        <meta name='description' content='Club League' />
-        <link rel='icon' href='/favicon.ico' />
+        <meta name="description" content="Club League" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Provider>
         {/* <PWAInstallPrompt /> */}
@@ -24,10 +24,10 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </Layout>
 
-        {process.env.NODE_ENV === 'production' && (
-          <GoogleAnalytics gaId='G-78W6EQTCKS' />
+        {process.env.NODE_ENV === "production" && (
+          <GoogleAnalytics gaId="G-78W6EQTCKS" />
         )}
       </Provider>
     </>
-  )
+  );
 }

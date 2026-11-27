@@ -1,71 +1,71 @@
-import { seasonIdFromStageId } from '@club-league/utils'
-import { differenceInHours, isAfter, parseISO } from 'date-fns'
-import { Database } from '../database/Database'
-import { Table } from '../database/Table'
-import { StageResultEntity } from '../entity/StageResultEntity'
-import { ResultsStatus, StageResults } from '../generated/graphql'
-import { StageResultsMapper } from '../mapping/StageResultsMapper'
-import { GcService } from './GcService'
-import { StagesService } from './StagesService'
+import { seasonIdFromStageId } from "@club-league/utils";
+import { differenceInHours, isAfter, parseISO } from "date-fns";
+import type { Database } from "../database/Database";
+import { Table } from "../database/Table";
+import type { StageResultEntity } from "../entity/StageResultEntity";
+import { ResultsStatus, type StageResults } from "../generated/graphql";
+import type { StageResultsMapper } from "../mapping/StageResultsMapper";
+import type { GcService } from "./GcService";
+import type { StagesService } from "./StagesService";
 
 export class StageResultsService {
-  private database: Database
-  private stageResultsMapper: StageResultsMapper
-  private stagesService: StagesService
-  private gcService: GcService
+  private database: Database;
+  private stageResultsMapper: StageResultsMapper;
+  private stagesService: StagesService;
+  private gcService: GcService;
 
   constructor(
     database: Database,
     stageResultsMapper: StageResultsMapper,
     stagesService: StagesService,
-    gcService: GcService
+    gcService: GcService,
   ) {
-    this.database = database
-    this.stageResultsMapper = stageResultsMapper
-    this.stagesService = stagesService
-    this.gcService = gcService
+    this.database = database;
+    this.stageResultsMapper = stageResultsMapper;
+    this.stagesService = stagesService;
+    this.gcService = gcService;
   }
 
   public getStageResults(stageId: string): StageResults {
-    const stages = this.stagesService.getStages(seasonIdFromStageId(stageId))
+    const stages = this.stagesService.getStages(seasonIdFromStageId(stageId));
     try {
       const stageResultEntities = this.database.getById<StageResultEntity[]>(
         Table.RESULTS,
-        stageId
-      )
+        stageId,
+      );
 
-      const gc = this.gcService.getGc(stageId)
+      const gc = this.gcService.getGc(stageId);
 
       const stageResults = this.stageResultsMapper.map(
         stageResultEntities,
         stageId,
-        stages
-      )
+        stages,
+      );
 
       return {
         ...stageResults,
-        gcLeaderId: gc.gcRiders[0]?.rider.id ?? ''
-      }
+        gcLeaderId: gc.gcRiders[0]?.rider.id ?? "",
+      };
     } catch (e) {
-      if (e instanceof Error && e.message.includes('ENOENT')) {
-        const currentStage = stages.find((it) => it.id === stageId)! // TODO !
-        const date = new Date()
-        const stageDate = parseISO(currentStage.startTime)
-        let resultsStatus = ResultsStatus.Upcoming
+      if (e instanceof Error && e.message.includes("ENOENT")) {
+        const currentStage = stages.find((it) => it.id === stageId)!; // TODO !
+        const date = new Date();
+        const stageDate = parseISO(currentStage.startTime);
+        let resultsStatus = ResultsStatus.Upcoming;
         if (
           isAfter(date, stageDate) &&
           differenceInHours(stageDate, date) < 24
         ) {
-          resultsStatus = ResultsStatus.AwaitingResults
+          resultsStatus = ResultsStatus.AwaitingResults;
         }
         return {
           id: stageId,
-          gcLeaderId: '',
+          gcLeaderId: "",
           resultsStatus: resultsStatus,
-          categoryResults: []
-        }
+          categoryResults: [],
+        };
       } else {
-        throw e
+        throw e;
       }
     }
   }

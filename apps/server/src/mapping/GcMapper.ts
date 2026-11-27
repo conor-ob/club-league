@@ -1,31 +1,31 @@
-import { stageNumberFromStageId } from '@club-league/utils'
-import { Database } from '../database/Database'
-import { Table } from '../database/Table'
-import { StageResultEntity } from '../entity/StageResultEntity'
+import { stageNumberFromStageId } from "@club-league/utils";
+import type { Database } from "../database/Database";
+import { Table } from "../database/Table";
+import type { StageResultEntity } from "../entity/StageResultEntity";
 import {
-  Category,
-  Club,
-  Gc,
-  GcRider,
+  type Category,
+  type Club,
+  type Gc,
+  type GcRider,
   GcStatus,
   ResultsStatus,
-  Stage
-} from '../generated/graphql'
+  type Stage,
+} from "../generated/graphql";
 
 export class GcMapper {
-  private database: Database
+  private database: Database;
 
   constructor(database: Database) {
-    this.database = database
+    this.database = database;
   }
 
   public map(
     stageResultEntities: StageResultEntity[],
     stageId: string,
-    stages: Stage[]
+    stages: Stage[],
   ): Gc {
-    const categories = this.database.getAll<Category>(Table.CATEGORIES)
-    const clubs = this.database.getAll<Club>(Table.CLUBS)
+    const categories = this.database.getAll<Category>(Table.CATEGORIES);
+    const clubs = this.database.getAll<Club>(Table.CLUBS);
     return {
       id: stageId,
       gcStatus: this.getGcStatus(stageId, stages),
@@ -37,76 +37,76 @@ export class GcMapper {
             rider: {
               id: stageResultEntity.riderId,
               name: stageResultEntity.riderName,
-              initials: stageResultEntity.riderInitials
+              initials: stageResultEntity.riderInitials,
             },
             club: clubs.find((c) => c.id === stageResultEntity.clubId)!, // TODO !
             category: categories.find(
-              (c) => c.id === stageResultEntity.categoryId
+              (c) => c.id === stageResultEntity.categoryId,
             )!, // TODO !
             gcPoints: this.calculateGcPoints(
               stageResultEntity.seasonPoints,
-              stages
+              stages,
             ),
             totalPoints: this.calcualteTotalPoints(
-              stageResultEntity.seasonPoints
+              stageResultEntity.seasonPoints,
             ),
             seasonPoints: stageResultEntity.seasonPoints,
-            movement: 0
-          }
+            movement: 0,
+          };
         })
         .sort((a, b) => {
           if (a.gcPoints === b.gcPoints) {
-            const aMax = Math.max(...a.seasonPoints)
-            const bMax = Math.max(...b.seasonPoints)
+            const aMax = Math.max(...a.seasonPoints);
+            const bMax = Math.max(...b.seasonPoints);
             if (aMax === bMax) {
-              return a.category.rank - b.category.rank
+              return a.category.rank - b.category.rank;
             } else {
-              return bMax - aMax
+              return bMax - aMax;
             }
           } else {
-            return b.gcPoints - a.gcPoints
+            return b.gcPoints - a.gcPoints;
           }
         })
         .map((gcRider, index) => {
           return {
             ...gcRider,
-            rank: index + 1
-          }
+            rank: index + 1,
+          };
         })
         .reduce((accumulator, gcRider) => {
           if (accumulator.length === 0) {
             accumulator.push({
               ...gcRider,
-              position: gcRider.rank.toString()
-            })
+              position: gcRider.rank.toString(),
+            });
           } else {
-            const previousGcRider = accumulator[accumulator.length - 1]! // TODO !
+            const previousGcRider = accumulator[accumulator.length - 1]!; // TODO !
             if (previousGcRider.gcPoints === gcRider.gcPoints) {
               accumulator[accumulator.length - 1] = {
                 ...previousGcRider,
-                position: this.getPosition(previousGcRider.position)
-              }
+                position: this.getPosition(previousGcRider.position),
+              };
               accumulator.push({
                 ...gcRider,
-                position: this.getPosition(previousGcRider.position)
-              })
+                position: this.getPosition(previousGcRider.position),
+              });
             } else {
               accumulator.push({
                 ...gcRider,
-                position: `${gcRider.rank}`
-              })
+                position: `${gcRider.rank}`,
+              });
             }
           }
-          return accumulator
-        }, new Array<GcRider>())
-    }
+          return accumulator;
+        }, [] as GcRider[]),
+    };
   }
 
   private getGcStatus(stageId: string, stages: Stage[]): GcStatus {
     if (stageId === stages[stages.length - 1]?.id) {
-      return GcStatus.Completed
+      return GcStatus.Completed;
     } else {
-      return GcStatus.InProgress
+      return GcStatus.InProgress;
     }
   }
 
@@ -114,35 +114,35 @@ export class GcMapper {
     const mandatoryStageIndexes = stages
       .filter((stage) => stage.mandatory)
       .map((stage) => Number(stageNumberFromStageId(stage.id)) - 1)
-      .filter((index) => index < stagePoints.length)
+      .filter((index) => index < stagePoints.length);
 
-    let mandatoryStagePoints = 0
+    let mandatoryStagePoints = 0;
     for (const index of mandatoryStageIndexes) {
-      mandatoryStagePoints = mandatoryStagePoints + stagePoints[index]!
+      mandatoryStagePoints = mandatoryStagePoints + stagePoints[index]!;
     }
 
     const otherStagePoints = stagePoints
       .filter((_, index) => !mandatoryStageIndexes.includes(index))
       .sort((a, b) => b - a)
       .slice(0, 11)
-      .reduce((a, b) => a + b, 0)
+      .reduce((a, b) => a + b, 0);
 
-    return mandatoryStagePoints + otherStagePoints
+    return mandatoryStagePoints + otherStagePoints;
   }
 
   private calcualteTotalPoints(stagePoints: number[]): number {
-    return stagePoints.reduce((a, b) => a + b, 0)
+    return stagePoints.reduce((a, b) => a + b, 0);
   }
 
   private getPosition(previousPosition: string): string {
-    if (previousPosition.startsWith('T')) {
-      return previousPosition
+    if (previousPosition.startsWith("T")) {
+      return previousPosition;
     } else {
-      const rank = Number(previousPosition)
+      const rank = Number(previousPosition);
       if (rank > 99) {
-        return previousPosition
+        return previousPosition;
       } else {
-        return `T${previousPosition}`
+        return `T${previousPosition}`;
       }
     }
   }

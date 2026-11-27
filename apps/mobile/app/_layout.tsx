@@ -8,47 +8,47 @@ import {
   Inter_700Bold,
   Inter_800ExtraBold,
   Inter_900Black,
-  useFonts
-} from '@expo-google-fonts/inter'
-import { Provider } from 'app/provider'
-import { SplashScreen, Stack } from 'expo-router'
-import { useEffect } from 'react'
+  useFonts,
+} from "@expo-google-fonts/inter";
+import { Provider } from "app/provider";
+import { SplashScreen, Stack } from "expo-router";
+import { useEffect } from "react";
 
-import '../global.css'
+import "../global.css";
 
 export default function Root() {
   const [loaded, error] = useFonts({
-    'inter-thin': Inter_100Thin,
-    'inter-extralight': Inter_200ExtraLight,
-    'inter-light': Inter_300Light,
-    'inter-regular': Inter_400Regular,
-    'inter-medium': Inter_500Medium,
-    'inter-semibold': Inter_600SemiBold,
-    'inter-bold': Inter_700Bold,
-    'inter-extrabold': Inter_800ExtraBold,
-    'inter-black': Inter_900Black
-  })
+    "inter-thin": Inter_100Thin,
+    "inter-extralight": Inter_200ExtraLight,
+    "inter-light": Inter_300Light,
+    "inter-regular": Inter_400Regular,
+    "inter-medium": Inter_500Medium,
+    "inter-semibold": Inter_600SemiBold,
+    "inter-bold": Inter_700Bold,
+    "inter-extrabold": Inter_800ExtraBold,
+    "inter-black": Inter_900Black,
+  });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
-    if (error) throw error
-  }, [error])
+    if (error) throw error;
+  }, [error]);
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync()
+      SplashScreen.hideAsync();
     }
-  }, [loaded])
+  }, [loaded]);
 
   if (!loaded) {
-    return null
+    return null;
   }
 
   return (
     <Provider>
       <Stack>
-        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
     </Provider>
-  )
+  );
 }

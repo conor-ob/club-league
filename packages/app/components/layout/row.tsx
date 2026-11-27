@@ -1,12 +1,12 @@
-import cx from 'classnames'
-import { View } from 'react-native'
+import cx from "classnames";
+import { View } from "react-native";
 
 export function Row({
   className,
-  children
+  children,
 }: {
-  className?: string
-  children: React.ReactNode
+  className?: string;
+  children: React.ReactNode;
 }) {
-  return <View className={cx('flex-row', className)}>{children}</View>
+  return <View className={cx("flex-row", className)}>{children}</View>;
 }

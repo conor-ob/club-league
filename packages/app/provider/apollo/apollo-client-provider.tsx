@@ -4,54 +4,50 @@ import {
   ApolloProvider,
   HttpLink,
   InMemoryCache,
-  Observable
-} from '@apollo/client'
-import { onError } from '@apollo/client/link/error'
-import { config } from '@club-league/config'
-import { useMemo } from 'react'
+  Observable,
+} from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
+import { config } from "@club-league/config";
+import { useMemo } from "react";
 
 type ApolloProviderProps = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 export function ApolloClientProvider({ children }: ApolloProviderProps) {
-  const httpLink = new HttpLink({ uri: config.graphqlUri })
+  const httpLink = new HttpLink({ uri: config.graphqlUri });
 
   const delayLink = (delay = 1000) =>
     new ApolloLink((operation, forward) => {
       return new Observable((observer) => {
-        const getDelayedMethod =
-          (name: string) =>
-          (...args: any) => {
-            setTimeout(() => {
-              // @ts-ignore
-              observer[name](...args)
-            }, delay)
-          }
         const subscription = forward(operation).subscribe({
-          next: getDelayedMethod('next'),
-          error: getDelayedMethod('error')
-        })
+          next: (value) => {
+            setTimeout(() => observer.next(value), delay);
+          },
+          error: (error) => {
+            setTimeout(() => observer.error(error), delay);
+          },
+        });
         return () => {
-          if (subscription) subscription.unsubscribe()
-        }
-      })
-    })
+          if (subscription) subscription.unsubscribe();
+        };
+      });
+    });
 
   const errorLink = onError(({ graphQLErrors, networkError, operation }) => {
     if (graphQLErrors) {
-      graphQLErrors.forEach(({ message }) =>
+      graphQLErrors.forEach(({ message }) => {
         console.log(
           `[GraphQL error]: ${JSON.stringify(
             {
               operation: operation.operationName,
-              message: message
+              message: message,
             },
             null,
-            2
-          )}`
-        )
-      )
+            2,
+          )}`,
+        );
+      });
     }
 
     if (networkError) {
@@ -62,30 +58,30 @@ export function ApolloClientProvider({ children }: ApolloProviderProps) {
             error: {
               name: networkError.name,
               message: networkError.message,
-              cause: networkError.cause
-            }
+              cause: networkError.cause,
+            },
           },
           null,
-          2
-        )}`
-      )
+          2,
+        )}`,
+      );
     }
-  })
+  });
 
   const apolloLink =
-    process.env.NODE_ENV === 'production'
+    process.env.NODE_ENV === "production"
       ? ApolloLink.from([errorLink, httpLink])
-      : ApolloLink.from([delayLink(500), errorLink, httpLink])
+      : ApolloLink.from([delayLink(500), errorLink, httpLink]);
 
   const client = useMemo(
     () =>
       new ApolloClient({
         link: apolloLink,
-        cache: new InMemoryCache()
+        cache: new InMemoryCache(),
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  )
+    [],
+  );
 
-  return <ApolloProvider client={client}>{children}</ApolloProvider>
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
 }

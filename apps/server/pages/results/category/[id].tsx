@@ -1,3 +1,3 @@
-import { CategoryResultsFeature } from 'app/features/category/category-results-feature'
+import { CategoryResultsFeature } from "app/features/category/category-results-feature";
 
-export default CategoryResultsFeature
+export default CategoryResultsFeature;

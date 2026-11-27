@@ -1,11 +1,11 @@
 // import * as Reactfrom from "react";
-import { useRef, useEffect } from 'react';
 
 /*  dependencies:
     "@khmyznikov/pwa-install": "*",
     "@lit": "*"
 */
-import PWAInstall from '@khmyznikov/pwa-install/dist/pwa-install.react.js';
+import PWAInstall from "@khmyznikov/pwa-install/dist/pwa-install.react.js";
+import { useEffect, useRef } from "react";
 
 /*
   manifestUrl = '/manifest.json',
@@ -33,7 +33,7 @@ const PWAInstallComponent = ({
 
   // Filter out null or undefined props
   const nonNullProps = Object.fromEntries(
-    Object.entries(props).filter(([_, value]) => value != null)
+    Object.entries(props).filter(([_, value]) => value != null),
   );
 
   useEffect(() => {
@@ -47,31 +47,82 @@ const PWAInstallComponent = ({
     const handleInstallGallery = (event) => onInstallGallery?.(event);
 
     if (currentElement) {
-      currentElement.addEventListener('pwa-install-success-event', handleInstallSuccess);
-      currentElement.addEventListener('pwa-install-fail-event', handleInstallFail);
-      currentElement.addEventListener('pwa-user-choice-result-event', handleUserChoiceResult);
-      currentElement.addEventListener('pwa-install-available-event', handleInstallAvailable);
-      currentElement.addEventListener('pwa-install-how-to-event', handleInstallHowTo);
-      currentElement.addEventListener('pwa-install-gallery-event', handleInstallGallery);
+      currentElement.addEventListener(
+        "pwa-install-success-event",
+        handleInstallSuccess,
+      );
+      currentElement.addEventListener(
+        "pwa-install-fail-event",
+        handleInstallFail,
+      );
+      currentElement.addEventListener(
+        "pwa-user-choice-result-event",
+        handleUserChoiceResult,
+      );
+      currentElement.addEventListener(
+        "pwa-install-available-event",
+        handleInstallAvailable,
+      );
+      currentElement.addEventListener(
+        "pwa-install-how-to-event",
+        handleInstallHowTo,
+      );
+      currentElement.addEventListener(
+        "pwa-install-gallery-event",
+        handleInstallGallery,
+      );
 
       return () => {
-        currentElement.removeEventListener('pwa-install-success-event', handleInstallSuccess);
-        currentElement.removeEventListener('pwa-install-fail-event', handleInstallFail);
-        currentElement.removeEventListener('pwa-user-choice-result-event', handleUserChoiceResult);
-        currentElement.removeEventListener('pwa-install-available-event', handleInstallAvailable);
-        currentElement.removeEventListener('pwa-install-how-to-event', handleInstallHowTo);
-        currentElement.removeEventListener('pwa-install-gallery-event', handleInstallGallery);
+        currentElement.removeEventListener(
+          "pwa-install-success-event",
+          handleInstallSuccess,
+        );
+        currentElement.removeEventListener(
+          "pwa-install-fail-event",
+          handleInstallFail,
+        );
+        currentElement.removeEventListener(
+          "pwa-user-choice-result-event",
+          handleUserChoiceResult,
+        );
+        currentElement.removeEventListener(
+          "pwa-install-available-event",
+          handleInstallAvailable,
+        );
+        currentElement.removeEventListener(
+          "pwa-install-how-to-event",
+          handleInstallHowTo,
+        );
+        currentElement.removeEventListener(
+          "pwa-install-gallery-event",
+          handleInstallGallery,
+        );
       };
     }
-  }, [onInstallSuccess, onInstallFail, onUserChoiceResult, onInstallAvailable, onInstallHowTo, onInstallGallery]);
+  }, [
+    onInstallSuccess,
+    onInstallFail,
+    onUserChoiceResult,
+    onInstallAvailable,
+    onInstallHowTo,
+    onInstallGallery,
+  ]);
 
   return (
     <>
-      <PWAInstall
-        ref={pwaInstallRef}
-        {...nonNullProps}
-      />
-      {!(window.matchMedia('(display-mode: standalone)').matches || ('standalone' in navigator && (navigator).standalone === true)) && <button className='text-secondary text-sm font-inter-regular pt-0.5' onClick={() => pwaInstallRef.current.showDialog(true)}>Install app</button>}
+      <PWAInstall ref={pwaInstallRef} {...nonNullProps} />
+      {!(
+        window.matchMedia("(display-mode: standalone)").matches ||
+        ("standalone" in navigator && navigator.standalone === true)
+      ) && (
+        <button
+          type="button"
+          className="text-secondary text-sm font-inter-regular pt-0.5"
+          onClick={() => pwaInstallRef.current.showDialog(true)}
+        >
+          Install app
+        </button>
+      )}
     </>
   );
 };

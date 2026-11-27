@@ -1,48 +1,49 @@
-import { Card } from 'app/components/card/card'
-import { HeroIcon } from 'app/components/icon/heroicon'
-import { Column } from 'app/components/layout/column'
-import { Row } from 'app/components/layout/row'
-import { colors } from 'app/design/colors'
-import { Stage } from 'app/generated/graphql'
-import useAppleDevice from 'app/hooks/use-apple-device'
-import useScreenSize from 'app/hooks/use-screen-size'
-import { Text, TouchableOpacity, View, useColorScheme } from 'react-native'
-import { Link } from 'solito/link'
+import { Card } from "app/components/card/card";
+import { HeroIcon } from "app/components/icon/heroicon";
+import { Column } from "app/components/layout/column";
+import { Row } from "app/components/layout/row";
+import { colors } from "app/design/colors";
+import type { Stage } from "app/generated/graphql";
+import useAppleDevice from "app/hooks/use-apple-device";
+import useScreenSize from "app/hooks/use-screen-size";
+import { Text, TouchableOpacity, useColorScheme, View } from "react-native";
+import { Link } from "solito/link";
 
 export function StageMap({ stage }: { stage: Stage }) {
-  const screenSize = useScreenSize()
+  const screenSize = useScreenSize();
 
   // hack for padding of px-4 on each side - 16 + 16 =  32px
   // 768px = max-w-3xl
-  const maxMapWidth = 768
-  const mapWidth = Math.min(screenSize.width, maxMapWidth) - 32
-  const marginLeft = `-${Math.floor(mapWidth / 2)}px`
+  const maxMapWidth = 768;
+  const mapWidth = Math.min(screenSize.width, maxMapWidth) - 32;
+  const marginLeft = `-${Math.floor(mapWidth / 2)}px`;
 
-  const apiKey = 'AIzaSyAcdXzRjKbuTL6DCbjR9r74lAmZhppaW_M'
-  const zoom = 14
+  const apiKey = "AIzaSyAcdXzRjKbuTL6DCbjR9r74lAmZhppaW_M";
+  const zoom = 14;
 
   return (
     <Column>
-      <Text className='text-primary font-inter-medium ml-4 text-xl'>
+      <Text className="text-primary font-inter-medium ml-4 text-xl">
         Location
       </Text>
-      <View className='h-2' />
+      <View className="h-2" />
       <Card>
         <Column>
           <div
-            className='rounded-t-xl'
-            style={{ width: '100%', overflow: 'hidden', height: '250px' }}
+            className="rounded-t-xl"
+            style={{ width: "100%", overflow: "hidden", height: "250px" }}
           >
             <iframe
+              title={`Map of ${stage.name}`}
               style={{
-                border: '0',
-                marginTop: '-125px',
+                border: "0",
+                marginTop: "-125px",
                 marginLeft: marginLeft,
-                pointerEvents: 'none'
+                pointerEvents: "none",
               }}
-              width='200%'
-              height='500'
-              loading='lazy'
+              width="200%"
+              height="500"
+              loading="lazy"
               src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${stage.coordinates}&center=${stage.coordinates}&zoom=${zoom}`}
             />
           </div>
@@ -50,16 +51,16 @@ export function StageMap({ stage }: { stage: Stage }) {
         </Column>
       </Card>
     </Column>
-  )
+  );
 }
 
 function Directions({ stage }: { stage: Stage }) {
-  const colorScheme = useColorScheme()
+  const colorScheme = useColorScheme();
   // const isAppleDevice = useAppleDevice()
 
   return (
-    <Row className='items-center justify-between px-4 py-4'>
-      <Text className='text-secondary font-inter-regular text-base'>
+    <Row className="items-center justify-between px-4 py-4">
+      <Text className="text-secondary font-inter-regular text-base">
         {stage.location}
       </Text>
       <TouchableOpacity>
@@ -71,19 +72,19 @@ function Directions({ stage }: { stage: Stage }) {
           }
         >
           <Row>
-            <Text className='text-brand-blue font-inter-regular text-base'>
+            <Text className="text-brand-blue font-inter-regular text-base">
               Directions
             </Text>
             <HeroIcon
-              name={'chevron-right'}
-              color={colors[colorScheme ?? 'light'].brandBlue}
+              name={"chevron-right"}
+              color={colors[colorScheme ?? "light"].brandBlue}
               size={24}
             />
           </Row>
         </Link>
       </TouchableOpacity>
     </Row>
-  )
+  );
 
   // if (isAppleDevice) {
   //   return (

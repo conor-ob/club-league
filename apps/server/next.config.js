@@ -1,4 +1,4 @@
-const { withExpo } = require('@expo/next-adapter')
+const { withExpo } = require("@expo/next-adapter");
 // const withPWA = require('next-pwa')({
 //   dest: 'public',
 //   disable: process.env.NODE_ENV === 'development'
@@ -13,27 +13,27 @@ const nextConfig = {
   // once that gets fixed, set this back to true
   reactStrictMode: false,
   transpilePackages: [
-    '@nandorojo/heroicons',
-    '@react-native-segmented-control/segmented-control',
-    'app',
-    'moti',
-    'nativewind',
-    'react-native',
-    'react-native-css-interop',
-    'react-native-gesture-handler',
-    'react-native-reanimated',
-    'react-native-svg',
-    'react-native-web',
-    'solito'
+    "@nandorojo/heroicons",
+    "@react-native-segmented-control/segmented-control",
+    "app",
+    "moti",
+    "nativewind",
+    "react-native",
+    "react-native-css-interop",
+    "react-native-gesture-handler",
+    "react-native-reanimated",
+    "react-native-svg",
+    "react-native-web",
+    "solito",
   ],
   webpack: (c) => {
     c.module.rules.push({
       test: /\.jsx?$/,
-      use: ['remove-flow-types-loader']
-    })
-    return c
-  }
-}
+      use: ["remove-flow-types-loader"],
+    });
+    return c;
+  },
+};
 
 // module.exports = withPWA(withExpo(nextConfig))
-module.exports = withExpo(nextConfig)
+module.exports = withExpo(nextConfig);

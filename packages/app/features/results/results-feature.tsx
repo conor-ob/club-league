@@ -1,32 +1,31 @@
-import { stageNumberFromStageId } from '@club-league/utils'
-import { GenericErrorView } from 'app/components/view/generic-error-view'
-import { RefreshScrollView } from 'app/components/view/refresh-scroll-view'
-import { FlatList, Text, View, useColorScheme } from 'react-native'
-import { createParam } from 'solito'
-import { Card } from '../../components/card/card'
-import { CardDivider } from '../../components/card/card-divider'
-import { StageNavigation } from '../../components/navigation/stage-navigation'
-import { ResultsStatus } from '../../generated/graphql'
-import { useStageResultsQuery } from '../../graphql/use-stage-results-query'
-import { StageCard } from '../stage/stage-card'
-import { CategoryResultsListItem } from './category-results-list-item'
-import { ResultsFeatureSkeleton } from './results-feature-skeleton'
+import { stageNumberFromStageId } from "@club-league/utils";
+import { GenericErrorView } from "app/components/view/generic-error-view";
+import { RefreshScrollView } from "app/components/view/refresh-scroll-view";
+import { FlatList, Text, View } from "react-native";
+import { createParam } from "solito";
+import { Card } from "../../components/card/card";
+import { CardDivider } from "../../components/card/card-divider";
+import { StageNavigation } from "../../components/navigation/stage-navigation";
+import { ResultsStatus } from "../../generated/graphql";
+import { useStageResultsQuery } from "../../graphql/use-stage-results-query";
+import { StageCard } from "../stage/stage-card";
+import { CategoryResultsListItem } from "./category-results-list-item";
+import { ResultsFeatureSkeleton } from "./results-feature-skeleton";
 
 const { useParams } = createParam<{
-  id: string
-}>()
+  id: string;
+}>();
 
 export function ResultsFeature() {
-  const { params } = useParams()
-  const colorScheme = useColorScheme()
+  const { params } = useParams();
 
   const { loading, data, error, refetch } = useStageResultsQuery({
-    stageId: params.id
-  })
+    stageId: params.id,
+  });
 
   return (
     <RefreshScrollView
-      contentContainerClassName='px-4 py-6'
+      contentContainerClassName="px-4 py-6"
       loading={loading}
       onRefresh={() => refetch()}
     >
@@ -35,12 +34,12 @@ export function ResultsFeature() {
       ) : data ? (
         <View>
           <StageCard stage={data.stage} />
-          <View className='h-6' />
-          <StageNavigation baseUrl='/results' disabled={loading} />
-          <View className='h-12' />
+          <View className="h-6" />
+          <StageNavigation baseUrl="/results" disabled={loading} />
+          <View className="h-12" />
           {data.stageResults.resultsStatus === ResultsStatus.Upcoming && (
             <Card>
-              <Text className='text-secondary font-inter-regular p-4 text-center text-base'>
+              <Text className="text-secondary font-inter-regular p-4 text-center text-base">
                 {`Stage ${stageNumberFromStageId(data.stage.id)} not yet started`}
               </Text>
             </Card>
@@ -48,7 +47,7 @@ export function ResultsFeature() {
           {data.stageResults.resultsStatus ===
             ResultsStatus.AwaitingResults && (
             <Card>
-              <Text className='text-primary font-inter-regular p-4 text-center text-base'>
+              <Text className="text-primary font-inter-regular p-4 text-center text-base">
                 {`Results will be available after Stage ${stageNumberFromStageId(data.stage.id)}`}
               </Text>
             </Card>
@@ -73,10 +72,10 @@ export function ResultsFeature() {
           )}
         </View>
       ) : error ? (
-        <GenericErrorView basePath='/results' />
+        <GenericErrorView basePath="/results" />
       ) : (
         <View></View>
       )}
     </RefreshScrollView>
-  )
+  );
 }

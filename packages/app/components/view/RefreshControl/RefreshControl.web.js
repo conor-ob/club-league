@@ -1,20 +1,20 @@
-import PropTypes from 'prop-types'
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import PropTypes from "prop-types";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import {
   ActivityIndicator,
   Animated,
+  findNodeHandle,
   PanResponder,
   Text,
+  useColorScheme,
   View,
-  findNodeHandle,
-  useColorScheme
-} from 'react-native'
+} from "react-native";
 
 const arrowIconLight =
-  'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzNjM2M0M2IzIiBjbGFzcz0idy02IGgtNiI+CiAgPHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtOC4yNSA0LjUgNy41IDcuNS03LjUgNy41IiAvPgo8L3N2Zz4K'
+  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzNjM2M0M2IzIiBjbGFzcz0idy02IGgtNiI+CiAgPHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtOC4yNSA0LjUgNy41IDcuNS03LjUgNy41IiAvPgo8L3N2Zz4K";
 
 const arrowIconDark =
-  'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2ViZWJlYjk5IiBjbGFzcz0idy02IGgtNiI+CiAgPHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtOC4yNSA0LjUgNy41IDcuNS03LjUgNy41IiAvPgo8L3N2Zz4K'
+  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2ViZWJlYjk5IiBjbGFzcz0idy02IGgtNiI+CiAgPHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtOC4yNSA0LjUgNy41IDcuNS03LjUgNy41IiAvPgo8L3N2Zz4K";
 
 RefreshControl.propTypes = {
   colors: PropTypes.array,
@@ -23,13 +23,13 @@ RefreshControl.propTypes = {
   progressBackgroundColor: PropTypes.any,
   progressViewOffset: PropTypes.number,
   refreshing: PropTypes.bool.isRequired,
-  size: PropTypes.oneOf(['small', 'large']),
+  size: PropTypes.oneOf(["small", "large"]),
   tintColor: PropTypes.any,
   title: PropTypes.string,
   titleColor: PropTypes.any,
   style: PropTypes.any,
-  children: PropTypes.any
-}
+  children: PropTypes.any,
+};
 export default function RefreshControl({
   refreshing,
   tintColor,
@@ -37,97 +37,97 @@ export default function RefreshControl({
   style,
   progressViewOffset,
   children,
-  size = 'large',
+  size = "large",
   title,
   titleColor,
   onRefresh,
-  enabled
+  enabled,
 }) {
-  const colorScheme = useColorScheme()
-  const arrowIcon = colorScheme === 'dark' ? arrowIconDark : arrowIconLight
+  const colorScheme = useColorScheme();
+  const arrowIcon = colorScheme === "dark" ? arrowIconDark : arrowIconLight;
 
-  const onRefreshRef = useRef(onRefresh)
+  const onRefreshRef = useRef(onRefresh);
   useEffect(() => {
-    onRefreshRef.current = onRefresh
-  }, [onRefresh])
-  const enabledRef = useRef(enabled)
+    onRefreshRef.current = onRefresh;
+  }, [onRefresh]);
+  const enabledRef = useRef(enabled);
   useEffect(() => {
-    enabledRef.current = enabled
-  }, [enabled])
+    enabledRef.current = enabled;
+  }, [enabled]);
 
-  const containerRef = useRef()
-  const pullPosReachedState = useRef(0)
-  const pullPosReachedAnimated = useRef(new Animated.Value(0))
-  const pullDownSwipeMargin = useRef(new Animated.Value(0))
+  const containerRef = useRef();
+  const pullPosReachedState = useRef(0);
+  const pullPosReachedAnimated = useRef(new Animated.Value(0));
+  const pullDownSwipeMargin = useRef(new Animated.Value(0));
 
   useEffect(() => {
     Animated.timing(pullDownSwipeMargin.current, {
       toValue: refreshing ? 50 : 0,
       duration: 350,
-      useNativeDriver: false
-    }).start()
+      useNativeDriver: false,
+    }).start();
     if (refreshing) {
-      pullPosReachedState.current = 0
-      pullPosReachedAnimated.current.setValue(0)
+      pullPosReachedState.current = 0;
+      pullPosReachedAnimated.current.setValue(0);
     }
-  }, [refreshing])
+  }, [refreshing]);
 
   const onPanResponderFinish = useCallback(() => {
     if (pullPosReachedState.current && onRefreshRef.current) {
-      onRefreshRef.current()
+      onRefreshRef.current();
     }
     if (!pullPosReachedState.current) {
       Animated.timing(pullDownSwipeMargin.current, {
         toValue: 0,
         duration: 350,
-        useNativeDriver: false
-      }).start()
+        useNativeDriver: false,
+      }).start();
     }
-  }, [])
+  }, []);
 
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => false,
       onStartShouldSetPanResponderCapture: () => false,
       onMoveShouldSetPanResponder: (_, gestureState) => {
-        if (!containerRef.current) return false
-        const containerDOM = findNodeHandle(containerRef.current)
-        if (!containerDOM) return false
+        if (!containerRef.current) return false;
+        const containerDOM = findNodeHandle(containerRef.current);
+        if (!containerDOM) return false;
         return (
           containerDOM.children[0].scrollTop === 0 &&
           Math.abs(gestureState.dy) > Math.abs(gestureState.dx) * 2 &&
           Math.abs(gestureState.vy) > Math.abs(gestureState.vx) * 2.5
-        )
+        );
       },
       onMoveShouldSetPanResponderCapture: () => false,
       onPanResponderMove: (_, gestureState) => {
-        if (enabledRef.current !== undefined && !enabledRef.current) return
+        if (enabledRef.current !== undefined && !enabledRef.current) return;
 
         const adjustedDy =
           gestureState.dy <= 0
             ? 0
-            : (gestureState.dy * 150) / (gestureState.dy + 120) // Diminishing returns function
-        pullDownSwipeMargin.current.setValue(adjustedDy)
-        const newValue = adjustedDy > 45 ? 1 : 0
+            : (gestureState.dy * 150) / (gestureState.dy + 120); // Diminishing returns function
+        pullDownSwipeMargin.current.setValue(adjustedDy);
+        const newValue = adjustedDy > 45 ? 1 : 0;
         if (newValue !== pullPosReachedState.current) {
-          pullPosReachedState.current = newValue
+          pullPosReachedState.current = newValue;
           Animated.timing(pullPosReachedAnimated.current, {
             toValue: newValue,
             duration: 150,
-            useNativeDriver: false
-          }).start()
+            useNativeDriver: false,
+          }).start();
         }
       },
       onPanResponderTerminationRequest: () => true,
       onPanResponderRelease: onPanResponderFinish,
-      onPanResponderTerminate: onPanResponderFinish
-    })
-  )
+      onPanResponderTerminate: onPanResponderFinish,
+    }),
+  );
 
   const refreshIndicatorColor = useMemo(
-    () => (tintColor ? tintColor : colors && colors.length ? colors[0] : null),
-    [colors, tintColor]
-  )
+    () => (tintColor ? tintColor : colors?.length ? colors[0] : null),
+    [colors, tintColor],
+  );
   const pullDownIconStyle = useMemo(
     () => ({
       width: 28,
@@ -137,34 +137,34 @@ export default function RefreshControl({
         {
           rotate: pullPosReachedAnimated.current.interpolate({
             inputRange: [0, 1],
-            outputRange: ['90deg', '270deg']
-          })
-        }
-      ]
+            outputRange: ["90deg", "270deg"],
+          }),
+        },
+      ],
     }),
-    []
-  )
+    [],
+  );
 
   const containerStyle = useMemo(
     () => [
       style,
       {
-        overflowY: 'hidden',
-        overflow: 'hidden',
-        paddingTop: progressViewOffset
-      }
+        overflowY: "hidden",
+        overflow: "hidden",
+        paddingTop: progressViewOffset,
+      },
     ],
-    [progressViewOffset, style]
-  )
+    [progressViewOffset, style],
+  );
   const indicatorTransformStyle = useMemo(
     () => ({
-      alignSelf: 'center',
+      alignSelf: "center",
       marginTop: -40,
       height: 40,
-      transform: [{ translateY: pullDownSwipeMargin.current }]
+      transform: [{ translateY: pullDownSwipeMargin.current }],
     }),
-    []
-  )
+    [],
+  );
 
   // This is messing with react-native-web's internal implementation
   // Will probably break if anything changes on their end
@@ -173,15 +173,15 @@ export default function RefreshControl({
       withAnimated((childProps) => (
         <children.props.children.type {...childProps} />
       )),
-    []
-  )
+    [],
+  );
   const newContentContainerStyle = useMemo(
     () => [
       children.props.children.props.style,
-      { transform: [{ translateY: pullDownSwipeMargin.current }] }
+      { transform: [{ translateY: pullDownSwipeMargin.current }] },
     ],
-    [children.props.children.props.style]
-  )
+    [children.props.children.props.style],
+  );
   const newChildren = React.cloneElement(
     children,
     null,
@@ -196,7 +196,7 @@ export default function RefreshControl({
             />
             {title && (
               <Text
-                style={{ color: titleColor, textAlign: 'center', marginTop: 5 }}
+                style={{ color: titleColor, textAlign: "center", marginTop: 5 }}
               >
                 {title}
               </Text>
@@ -213,8 +213,8 @@ export default function RefreshControl({
         {...children.props.children.props}
         style={newContentContainerStyle}
       />
-    </>
-  )
+    </>,
+  );
 
   return (
     <View
@@ -224,20 +224,20 @@ export default function RefreshControl({
     >
       {newChildren}
     </View>
-  )
+  );
 }
 
 function withAnimated(WrappedComponent) {
   const displayName =
-    WrappedComponent.displayName || WrappedComponent.name || 'Component'
+    WrappedComponent.displayName || WrappedComponent.name || "Component";
 
   class WithAnimated extends React.Component {
-    static displayName = `WithAnimated(${displayName})`
+    static displayName = `WithAnimated(${displayName})`;
 
     render() {
-      return <WrappedComponent {...this.props} />
+      return <WrappedComponent {...this.props} />;
     }
   }
 
-  return Animated.createAnimatedComponent(WithAnimated)
+  return Animated.createAnimatedComponent(WithAnimated);
 }

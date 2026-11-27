@@ -1,26 +1,26 @@
-import cx from 'classnames'
-import { Text } from 'react-native'
+import cx from "classnames";
+import { Text } from "react-native";
 
 type CardListHeaderProps = {
-  className?: string
-  textColor?: string
-  title: string
-}
+  className?: string;
+  textColor?: string;
+  title: string;
+};
 
 export function CardListHeader({
   title,
   className,
-  textColor
+  textColor,
 }: CardListHeaderProps) {
   return (
     <Text
       className={cx(
-        'font-inter-regular text-lg',
+        "font-inter-regular text-lg",
         className,
-        textColor ?? 'text-secondary'
+        textColor ?? "text-secondary",
       )}
     >
       {title}
     </Text>
-  )
+  );
 }

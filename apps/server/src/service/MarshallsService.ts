@@ -1,12 +1,12 @@
-import { Database } from '../database/Database'
-import { Table } from '../database/Table'
-import { StageMarshalls } from '../generated/graphql'
+import type { Database } from "../database/Database";
+import { Table } from "../database/Table";
+import type { StageMarshalls } from "../generated/graphql";
 
 export class MarshallsService {
-  private database: Database
+  private database: Database;
 
   constructor(database: Database) {
-    this.database = database
+    this.database = database;
   }
 
   public getMarshalls(stageId: string): StageMarshalls {
@@ -15,16 +15,16 @@ export class MarshallsService {
         id: stageId,
         marshalls: this.database
           .getById<string[]>(Table.MARSHALLS, stageId)
-          .sort()
-      }
+          .sort(),
+      };
     } catch (e) {
-      if (e instanceof Error && e.message.includes('ENOENT')) {
+      if (e instanceof Error && e.message.includes("ENOENT")) {
         return {
           id: stageId,
-          marshalls: []
-        }
+          marshalls: [],
+        };
       } else {
-        throw e
+        throw e;
       }
     }
   }

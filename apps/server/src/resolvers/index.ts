@@ -1,6 +1,6 @@
-import { Resolvers } from '../generated/graphql'
-import { Query } from './query'
+import type { Resolvers } from "../generated/graphql";
+import { Query } from "./query";
 
-const resolvers: Resolvers = { Query }
+const resolvers: Resolvers = { Query };
 
-export { resolvers }
+export { resolvers };
