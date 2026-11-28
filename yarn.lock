@@ -3183,6 +3183,7 @@ __metadata:
     "@heroicons/react": ^2.2.0
     "@khmyznikov/pwa-install": ^0.7.0
     "@next/third-parties": ^14.2.35
+    "@types/compression": ^1.8.1
     "@types/cors": ^2.8.19
     "@types/express": ^4.17.25
     "@types/lodash": ^4.17.27
@@ -6330,6 +6331,16 @@ __metadata:
     "@types/connect": "*"
     "@types/node": "*"
   checksum: 1e251118c4b2f61029cc43b0dc028495f2d1957fe8ee49a707fb940f86a9bd2f9754230805598278fe99958b49e9b7e66eec8ef6a50ab5c1f6b93e1ba2aaba82
+  languageName: node
+  linkType: hard
+
+"@types/compression@npm:^1.8.1":
+  version: 1.8.1
+  resolution: "@types/compression@npm:1.8.1"
+  dependencies:
+    "@types/express": "*"
+    "@types/node": "*"
+  checksum: f3fc76d6a1fdc61985d4d2cb42c17031fa992f8202e11f7e63fb01d01276b18fa812066d40e35b6600fbe5b2b04776cf29c244d97461943fc12eff1754db5fe0
   languageName: node
   linkType: hard
 
