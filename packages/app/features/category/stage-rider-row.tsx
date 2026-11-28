@@ -1,7 +1,7 @@
 import cx from "classnames";
 import { Text, View } from "react-native";
 import { YellowJersey } from "../../components/image/yellow-jersey";
-import type { StageRider } from "../../generated/graphql";
+import type { StageRider } from "../../graphql/types";
 
 type StageRiderRowProps = {
   stageRider: StageRider;

@@ -8,7 +8,7 @@ import { YellowJersey } from "../../components/image/yellow-jersey";
 import { Column } from "../../components/layout/column";
 import { Row } from "../../components/layout/row";
 import { Skeleton } from "../../components/loading/skeleton";
-import type { Stage } from "../../generated/graphql";
+import type { Stage } from "../../graphql/types";
 import { useStageResultsQuery } from "../../graphql/use-stage-results-query";
 import { ResultsHeader } from "./results-header";
 import { StageRiderComponent } from "./stage-rider-component";

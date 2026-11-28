@@ -1,6 +1,6 @@
 import { Card } from "app/components/card/card";
 import { Column } from "app/components/layout/column";
-import type { Stage } from "app/generated/graphql";
+import type { Stage } from "app/graphql/types";
 import { FlatList, Text, View } from "react-native";
 
 export function StageInfoCard({ stage }: { stage: Stage }) {
