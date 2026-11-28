@@ -41,10 +41,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      # yarn install variant: railwayapp/config always runs `npm install` at the
-      # repo root when package.json exists, and npm can't resolve a yarn
-      # workspace's deps. Install with yarn, then hide package.json so the npm
-      # step no-ops
+      # yarn install variant: install with yarn here, skipping build scripts,
+      # then set `package-manager: none` on the plan step so railwayapp/config
+      # skips its own install
       - name: Install node
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
@@ -55,16 +54,15 @@ jobs:
           corepack enable
           yarn install --immutable --mode=skip-build
 
-      - name: Hide package.json from npm
-        run: mv package.json package.json.bak
-
       # Uploads the plan as an artifact; the apply job applies exactly this
       # plan on merge
       - name: Railway config plan
-        uses: railwayapp/config@9e17d413dbe219f19d62538d9c06b5dbb5e9abf8 # v1.2.0
+        uses: railwayapp/config@71a26b7e0f7abd0a2c5700007f2dfe2722c1fb4e # v1.3.0
         with:
           command: plan
           railway-token: ${{ secrets.RAILWAY_TOKEN }}
+          # Deps are already installed above
+          package-manager: none
 
   apply:
     name: 🚀 Apply
@@ -80,7 +78,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Railway config apply
-        uses: railwayapp/config@9e17d413dbe219f19d62538d9c06b5dbb5e9abf8 # v1.2.0
+        uses: railwayapp/config@71a26b7e0f7abd0a2c5700007f2dfe2722c1fb4e # v1.3.0
         with:
           command: apply
           railway-token: ${{ secrets.RAILWAY_TOKEN }}
