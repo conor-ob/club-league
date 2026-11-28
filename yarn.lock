@@ -2325,7 +2325,7 @@ __metadata:
     "@graphql-codegen/schema-ast": ^4.1.0
     "@graphql-codegen/typescript": ^4.1.6
     "@graphql-codegen/typescript-resolvers": ^4.5.2
-    graphql: ^16.15.0
+    graphql: ^17.0.2
   languageName: unknown
   linkType: soft
 
@@ -2397,7 +2397,7 @@ __metadata:
     cross-env: ^10.1.0
     date-fns: ^4.4.0
     express: ^4.22.3
-    graphql: ^16.15.0
+    graphql: ^17.0.2
     next: 15.5.29
     raf: ^3.4.1
     react: 18.2.0
@@ -9684,10 +9684,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:^16.10.0, graphql@npm:^16.15.0":
+"graphql@npm:^16.10.0":
   version: 16.15.0
   resolution: "graphql@npm:16.15.0"
   checksum: 35cbd64bda2b0782fc18ca3ce20ce77252ebda9ff4fc4d5730b7cba2715560a7d8b618c6305c16e1bf5eec401e7512f051e1d0ddcde4a96d25a17e530086b8d9
+  languageName: node
+  linkType: hard
+
+"graphql@npm:^17.0.2":
+  version: 17.1.0
+  resolution: "graphql@npm:17.1.0"
+  checksum: 6983fd4e1afd67ef85e79e2a227ef3bf33000431f0bdae08cc4103fdb9f6e2af73024243a5a378997b0379602197d8784aefc97c3e3957c32555a5da6cddb25c
   languageName: node
   linkType: hard
 
