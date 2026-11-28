@@ -58,4 +58,3 @@ android
 *.tsbuildinfo
 .cache
 **/.cache
-**/vite.config.ts.timestamp-*
