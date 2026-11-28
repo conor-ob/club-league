@@ -4,18 +4,18 @@
 FROM node:26.13.1-alpine@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43ddeccd6452710bffb5 AS alpine
 RUN apk add --no-cache libc6-compat
 
-# Setup yarn (pinned by .yarnrc.yml yarnPath) and turbo (1.x reads turbo.json's
-# `pipeline`). Node 25+ no longer bundles corepack, so install it first
+# Setup yarn (pinned by .yarnrc.yml yarnPath) and turbo (keep in step with the
+# root package.json). Node 25+ no longer bundles corepack, so install it first
 FROM alpine AS base
 RUN npm install -g corepack@0.36.0 \
     && corepack enable \
-    && npm install -g turbo@1.12.5
+    && npm install -g turbo@2.11.13
 
 # Prune projects to isolate subworkspace
 FROM base AS pruner
 WORKDIR /app
 COPY . .
-RUN turbo prune --scope=@club-league/server --docker
+RUN turbo prune @club-league/server --docker
 
 # Build stage
 FROM base AS builder

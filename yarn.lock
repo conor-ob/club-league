@@ -8612,7 +8612,7 @@ __metadata:
     "@types/react": ^18.3.31
     "@types/react-native": ^0.73.0
     railway: ^3.17.0
-    turbo: ^2.0.0
+    turbo: ^2.11.13
     typescript: ^5.9.3
   languageName: unknown
   linkType: soft
@@ -18296,7 +18296,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo@npm:^2.0.0":
+"turbo@npm:^2.11.13":
   version: 2.11.13
   resolution: "turbo@npm:2.11.13"
   dependencies:
