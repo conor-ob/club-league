@@ -5,9 +5,10 @@ FROM node:26.13.1-alpine@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43dd
 RUN apk add --no-cache libc6-compat
 
 # Setup yarn (pinned by .yarnrc.yml yarnPath) and turbo (1.x reads turbo.json's
-# `pipeline`)
+# `pipeline`). Node 25+ no longer bundles corepack, so install it first
 FROM alpine AS base
-RUN corepack enable \
+RUN npm install -g corepack@0.36.0 \
+    && corepack enable \
     && npm install -g turbo@1.12.5
 
 # Prune projects to isolate subworkspace
