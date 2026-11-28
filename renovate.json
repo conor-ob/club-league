@@ -3,5 +3,13 @@
   "extends": [
     "github>conor-ob/renovate-config",
     "github>conor-ob/renovate-config:expo"
+  ],
+  "packageRules": [
+    {
+      "description": "Repo exception: a graphql major waits on the Dependency Dashboard for approval. Approve it once every @graphql-codegen/* package accepts it as a peer, or codegen fails.",
+      "matchPackageNames": ["graphql"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    }
   ]
 }
