@@ -16,5 +16,5 @@ export const ThemeProvider = ({
     return null;
   }
 
-  return <NextThemeProvider attribute="media">{children}</NextThemeProvider>;
+  return <NextThemeProvider>{children}</NextThemeProvider>;
 };
