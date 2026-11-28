@@ -10,6 +10,18 @@
       "matchPackageNames": ["graphql"],
       "matchUpdateTypes": ["major"],
       "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Repo exception: nativewind 4 only supports Tailwind 3 (nativewind 5 is the Tailwind 4 line). Re-enable alongside a nativewind 5 upgrade.",
+      "matchPackageNames": ["tailwindcss"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "description": "Repo exception: solito 5 drops react-native-web on web and targets Next 16 and Expo 54+. Re-enable with the Expo SDK upgrade.",
+      "matchPackageNames": ["solito"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     }
   ]
 }

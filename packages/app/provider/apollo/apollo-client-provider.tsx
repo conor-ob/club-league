@@ -1,14 +1,15 @@
 import {
   ApolloClient,
   ApolloLink,
-  ApolloProvider,
+  CombinedGraphQLErrors,
   HttpLink,
   InMemoryCache,
-  Observable,
 } from "@apollo/client";
-import { onError } from "@apollo/client/link/error";
+import { ErrorLink } from "@apollo/client/link/error";
+import { ApolloProvider } from "@apollo/client/react";
 import { config } from "@club-league/config";
 import { useMemo } from "react";
+import { Observable } from "rxjs";
 
 type ApolloProviderProps = {
   children: React.ReactNode;
@@ -34,9 +35,9 @@ export function ApolloClientProvider({ children }: ApolloProviderProps) {
       });
     });
 
-  const errorLink = onError(({ graphQLErrors, networkError, operation }) => {
-    if (graphQLErrors) {
-      graphQLErrors.forEach(({ message }) => {
+  const errorLink = new ErrorLink(({ error, operation }) => {
+    if (CombinedGraphQLErrors.is(error)) {
+      error.errors.forEach(({ message }) => {
         console.log(
           `[GraphQL error]: ${JSON.stringify(
             {
@@ -48,17 +49,15 @@ export function ApolloClientProvider({ children }: ApolloProviderProps) {
           )}`,
         );
       });
-    }
-
-    if (networkError) {
+    } else {
       console.log(
         `[Network error]: ${JSON.stringify(
           {
             operation: operation.operationName,
             error: {
-              name: networkError.name,
-              message: networkError.message,
-              cause: networkError.cause,
+              name: error.name,
+              message: error.message,
+              cause: error instanceof Error ? error.cause : undefined,
             },
           },
           null,
