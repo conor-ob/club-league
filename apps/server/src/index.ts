@@ -36,6 +36,9 @@ function startServer() {
     dev: process.env.NODE_ENV !== "production",
     hostname: config.hostname,
     port: config.port,
+    // next.config.js customises webpack (withExpo, flow-type loader), which
+    // Turbopack, the Next 16 default, doesn't run
+    webpack: true,
   });
   const handleNextRequest = application.getRequestHandler();
 

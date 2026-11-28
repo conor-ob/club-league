@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf dist && rm -rf .next && rm -rf node_modules",
-    "build": "tsdown && next build --no-lint",
+    "build": "tsdown && next build --webpack",
     "dev": "cross-env NODE_ENV=development tsx watch src/index.ts",
     "start": "cross-env NODE_ENV=production node dist/index.mjs -H 0.0.0.0 -p ${PORT:-8080}",
     "typecheck": "tsc --noEmit"
@@ -15,7 +15,7 @@
     "@club-league/config": "*",
     "@club-league/utils": "*",
     "@expo/next-adapter": "5.0.2",
-    "@headlessui/react": "^1.7.19",
+    "@headlessui/react": "^2.2.10",
     "@heroicons/react": "^2.2.0",
     "@khmyznikov/pwa-install": "^0.7.0",
     "@next/third-parties": "^16.4.6",
@@ -27,7 +27,7 @@
     "date-fns": "^4.4.0",
     "express": "^5.3.0",
     "graphql": "^16.15.0",
-    "next": "15.5.29",
+    "next": "16.4.3",
     "raf": "^3.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
