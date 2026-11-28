@@ -18,6 +18,11 @@ const config: CodegenConfig = {
       presetConfig: {
         persistedDocuments: true,
       },
+      config: {
+        // client-preset 5+ emits enums as string unions by default; the app
+        // compares against enum members (GcStatus.Completed, ...)
+        enumType: "native",
+      },
     },
   },
 };

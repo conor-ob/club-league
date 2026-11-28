@@ -1,6 +1,6 @@
 import { stageNumberFromStageId } from "@club-league/utils";
 import { Card } from "app/components/card/card";
-import type { Stage } from "app/generated/graphql";
+import type { Stage } from "app/graphql/types";
 import { Linking, Platform, Text, TouchableOpacity, View } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { MapMarker } from "../map-marker";

@@ -4,7 +4,7 @@ import { Text, useColorScheme, View } from "react-native";
 import { IconBadge } from "../../components/badge/icon-badge";
 import { Column } from "../../components/layout/column";
 import { colors } from "../../design/colors";
-import type { Stage } from "../../generated/graphql";
+import type { Stage } from "../../graphql/types";
 
 export function StageLayout({ stage }: { stage: Stage }) {
   const colorScheme = useColorScheme();

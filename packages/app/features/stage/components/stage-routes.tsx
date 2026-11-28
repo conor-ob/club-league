@@ -4,7 +4,8 @@ import { HeroIcon } from "app/components/icon/heroicon";
 import { Column } from "app/components/layout/column";
 import { Row } from "app/components/layout/row";
 import { colors } from "app/design/colors";
-import { type Route, RouteType } from "app/generated/graphql";
+import { RouteType } from "app/generated/graphql";
+import type { Route } from "app/graphql/types";
 import cx from "classnames";
 import {
   FlatList,

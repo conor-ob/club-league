@@ -3,7 +3,7 @@ import { HeroIcon } from "app/components/icon/heroicon";
 import { Column } from "app/components/layout/column";
 import { Row } from "app/components/layout/row";
 import { colors } from "app/design/colors";
-import type { Stage } from "app/generated/graphql";
+import type { Stage } from "app/graphql/types";
 import useAppleDevice from "app/hooks/use-apple-device";
 import useScreenSize from "app/hooks/use-screen-size";
 import { Text, TouchableOpacity, useColorScheme, View } from "react-native";

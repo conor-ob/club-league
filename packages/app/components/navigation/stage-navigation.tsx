@@ -2,7 +2,7 @@ import {
   seasonIdFromStageId,
   stageNumberFromStageId,
 } from "@club-league/utils";
-import type { Stage } from "app/generated/graphql";
+import type { Stage } from "app/graphql/types";
 import cx from "classnames";
 import { useEffect } from "react";
 import { Text, TouchableOpacity, useColorScheme, View } from "react-native";

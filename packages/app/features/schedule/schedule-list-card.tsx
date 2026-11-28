@@ -14,7 +14,7 @@ import { CardDivider } from "../../components/card/card-divider";
 import { HeroIcon } from "../../components/icon/heroicon";
 import { Row } from "../../components/layout/row";
 import { colors } from "../../design/colors";
-import type { Stage } from "../../generated/graphql";
+import type { Stage } from "../../graphql/types";
 import { StageLayout } from "../stage/stage-layout";
 
 export function ScheduleListCard({

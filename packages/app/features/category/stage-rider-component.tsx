@@ -1,5 +1,5 @@
 import { memo } from "react";
-import type { StageRider } from "../../generated/graphql";
+import type { StageRider } from "../../graphql/types";
 import { StageRiderRow } from "./stage-rider-row";
 
 type StageRiderComponentProps = {
