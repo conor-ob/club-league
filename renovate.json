@@ -3,5 +3,31 @@
   "extends": [
     "github>conor-ob/renovate-config",
     "github>conor-ob/renovate-config:expo"
+  ],
+  "packageRules": [
+    {
+      "description": "React types follow the React runtime, which the Expo SDK pins, so their majors only move with an SDK upgrade.",
+      "matchPackageNames": ["@types/react", "@types/react-dom"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "description": "Babel majors only move with an SDK upgrade, since babel-preset-expo has to support them first.",
+      "matchPackageNames": ["@babel/*"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "description": "React Navigation majors only move with an SDK upgrade, since expo-router is built on a specific major.",
+      "matchPackageNames": ["@react-navigation/*"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "description": "A graphql major waits on the Dependency Dashboard for approval. Approve it once every @graphql-codegen/* package accepts it as a peer, or codegen fails.",
+      "matchPackageNames": ["graphql"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    }
   ]
 }

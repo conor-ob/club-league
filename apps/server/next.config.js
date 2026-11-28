@@ -16,7 +16,6 @@ const nextConfig = {
     "@nandorojo/heroicons",
     "@react-native-segmented-control/segmented-control",
     "app",
-    "moti",
     "nativewind",
     "react-native",
     "react-native-css-interop",
