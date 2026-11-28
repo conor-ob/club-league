@@ -3055,21 +3055,21 @@ __metadata:
     "@types/react": ^18.2.21
     "@types/react-native": ^0.72.2
     app: "*"
-    expo: ^49.0.0
+    expo: ^49.0.23
     expo-image: ^1.10.6
     expo-linking: ~5.0.2
-    expo-router: ^2.0.5
+    expo-router: ^2.0.15
     expo-splash-screen: ~0.20.5
     expo-status-bar: ~1.6.0
     nativewind: ^4.0.1
     react: 18.2.0
     react-dom: 18.2.0
     react-native: 0.72.4
-    react-native-gesture-handler: ~2.12.0
+    react-native-gesture-handler: ~2.12.1
     react-native-reanimated: 3.3.0
-    react-native-safe-area-context: 4.6.3
-    react-native-screens: ~3.22.0
-    react-native-web: ~0.19.6
+    react-native-safe-area-context: 4.6.4
+    react-native-screens: ~3.22.1
+    react-native-web: ~0.19.13
     tailwindcss: ^3.4.1
     typescript: ^5.2.2
   languageName: unknown
@@ -3125,7 +3125,7 @@ __metadata:
     raf: ^3.4.1
     react: 18.2.0
     react-dom: 18.2.0
-    react-native-web: ~0.19.6
+    react-native-web: ~0.19.13
     remove-flow-types-loader: ^1.1.0
     setimmediate: ^1.0.5
     tailwindcss: ^3.4.1
@@ -5353,7 +5353,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native/normalize-color@npm:^2.0.0, @react-native/normalize-color@npm:^2.1.0":
+"@react-native/normalize-color@npm:^2.0.0":
   version: 2.1.0
   resolution: "@react-native/normalize-color@npm:2.1.0"
   checksum: 8ccbd40b3c7629f1dc97b3e9aadd95fd3507fcf2e37535a6299a70436ab891c34cbdc4240b07380553d6e85dd909e23d5773b5be1da2906b026312e0b0768838
@@ -5371,6 +5371,13 @@ __metadata:
   version: 0.72.0
   resolution: "@react-native/normalize-colors@npm:0.72.0"
   checksum: c8ec577663394a3390eb34c3cd531350521172bcfad7de309ab111e5f9e3d27c966d4a4387f00972302107be3d8cad584c5794ccfa30939aecc56162e4ddbe25
+  languageName: node
+  linkType: hard
+
+"@react-native/normalize-colors@npm:^0.74.1":
+  version: 0.74.89
+  resolution: "@react-native/normalize-colors@npm:0.74.89"
+  checksum: df62772f029dd132d3061a8ee7f90b6aaf5c525bb7e33c22908249daffa42995cddd91adc790ec9ce701636c14eeafc1809a9d0d879e3f8c71c9f340145abfce
   languageName: node
   linkType: hard
 
@@ -6607,7 +6614,7 @@ __metadata:
     "@react-native-segmented-control/segmented-control": ^2.5.0
     "@react-navigation/native": ~6.1.6
     classnames: ^2.5.1
-    expo-router: ^2.0.5
+    expo-router: ^2.0.15
     jest-diff: ^29.7.0
     moti: latest
     nativewind: ^4.0.1
@@ -6615,7 +6622,7 @@ __metadata:
     prop-types: ^15.8.1
     react-native: 0.72.4
     react-native-maps: ^1.10.3
-    react-native-safe-area-context: 4.6.3
+    react-native-safe-area-context: 4.6.4
     react-native-svg: ^15.1.0
     solito: ^4.2.2
   languageName: unknown
@@ -9322,7 +9329,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-router@npm:^2.0.5":
+"expo-router@npm:^2.0.15":
   version: 2.0.15
   resolution: "expo-router@npm:2.0.15"
   dependencies:
@@ -9374,7 +9381,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo@npm:^49.0.0":
+"expo@npm:^49.0.23":
   version: 49.0.23
   resolution: "expo@npm:49.0.23"
   dependencies:
@@ -14727,7 +14734,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-gesture-handler@npm:~2.12.0":
+"react-native-gesture-handler@npm:~2.12.1":
   version: 2.12.1
   resolution: "react-native-gesture-handler@npm:2.12.1"
   dependencies:
@@ -14780,17 +14787,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-safe-area-context@npm:4.6.3":
-  version: 4.6.3
-  resolution: "react-native-safe-area-context@npm:4.6.3"
+"react-native-safe-area-context@npm:4.6.4":
+  version: 4.6.4
+  resolution: "react-native-safe-area-context@npm:4.6.4"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: f304d22f3df981b7d01b8a983ef5ace161b5352dfd293ef5b525071e861856ff5eda8720eacf1bc1d5153add9e53d09ce59f8cbdd20b590718863b8bb38eeebf
+  checksum: c6905193528dda61268565799d81817b1e436c32c120480084e48c955075e1017b399f763368ef39c4049d6eb0e2c05c3496390857d836b47ddcf861ab60871e
   languageName: node
   linkType: hard
 
-"react-native-screens@npm:~3.22.0":
+"react-native-screens@npm:~3.22.1":
   version: 3.22.1
   resolution: "react-native-screens@npm:3.22.1"
   dependencies:
@@ -14829,12 +14836,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-web@npm:~0.19.6":
-  version: 0.19.10
-  resolution: "react-native-web@npm:0.19.10"
+"react-native-web@npm:~0.19.13":
+  version: 0.19.13
+  resolution: "react-native-web@npm:0.19.13"
   dependencies:
     "@babel/runtime": ^7.18.6
-    "@react-native/normalize-color": ^2.1.0
+    "@react-native/normalize-colors": ^0.74.1
     fbjs: ^3.0.4
     inline-style-prefixer: ^6.0.1
     memoize-one: ^6.0.0
@@ -14844,7 +14851,7 @@ __metadata:
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: d0a75d777fdd97ff513e2c2bb90512fbfeca2176916f1257085ee505b37c9c6dda64aefa863c970702aeca99d4d898cce843d74ecdaeb080875131cb1373d0dc
+  checksum: 15077f88204cb980203b8e3784c092c8c25c972bf281db43fd4ccc9696b603380a49f5289fb9a742daddd8e7599baab5798a1f1c857bdd634add827bc39fd8d8
   languageName: node
   linkType: hard
 
