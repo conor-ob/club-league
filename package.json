@@ -26,7 +26,8 @@
   "resolutions": {
     "@types/node": "^24.19.2",
     "metro": "~0.88.0",
-    "metro-resolver": "~0.88.0"
+    "metro-resolver": "~0.88.0",
+    "remove-flow-types-loader/flow-remove-types": "^2.343.0"
   },
   "nohoist": [
     "**/expo-router",

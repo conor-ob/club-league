@@ -7604,15 +7604,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babylon@npm:^6.15.0":
-  version: 6.18.0
-  resolution: "babylon@npm:6.18.0"
-  bin:
-    babylon: ./bin/babylon.js
-  checksum: 0777ae0c735ce1cbfc856d627589ed9aae212b84fb0c03c368b55e6c5d3507841780052808d0ad46e18a2ba516e93d55eeed8cd967f3b2938822dfeccfb2a16d
-  languageName: node
-  linkType: hard
-
 "balanced-match@npm:^1.0.0":
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
@@ -10413,6 +10404,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"flow-estree@npm:0.343.0":
+  version: 0.343.0
+  resolution: "flow-estree@npm:0.343.0"
+  checksum: 945aa11f8bb04841decf619ec995d0803872ce1d786648134c0b868a5c6192e811674b6cf48c5e945265a159f7cf30c4569b355704121d929ff403230b3e20ce
+  languageName: node
+  linkType: hard
+
 "flow-parser@npm:0.*":
   version: 0.231.0
   resolution: "flow-parser@npm:0.231.0"
@@ -10445,16 +10443,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flow-remove-types@npm:^1.0.0":
-  version: 1.2.3
-  resolution: "flow-remove-types@npm:1.2.3"
+"flow-parser@npm:^0.343.0":
+  version: 0.343.0
+  resolution: "flow-parser@npm:0.343.0"
   dependencies:
-    babylon: ^6.15.0
+    flow-estree: 0.343.0
+  checksum: c910279d17d345d9d255129168c113638bdb54f4bff071622410c3c2e005c5cd9425679a71e7bc4aedbdf6d6741bde7ed79e45806dce62ff608a0e33166753c4
+  languageName: node
+  linkType: hard
+
+"flow-remove-types@npm:^2.343.0":
+  version: 2.343.0
+  resolution: "flow-remove-types@npm:2.343.0"
+  dependencies:
+    flow-enums-runtime: ^0.0.6
+    flow-parser: ^0.343.0
+    pirates: ^3.0.2
+    source-map-support: ^0.5.21
     vlq: ^0.2.1
   bin:
-    flow-node: ./flow-node
-    flow-remove-types: ./flow-remove-types
-  checksum: 51a76e06eb038199ade28a16bd5c89589ff55ed281f0ec5f292477ca05ea32c8ccd27fe4b189c251e6f48705296ef50bc8f27ca5d55366f8bbd4cb5f6e4404da
+    flow-node: flow-node
+    flow-remove-types: flow-remove-types
+  checksum: 9e833b3b9769b423b3730625fdcbf86d4d28277a3c9d11569057df9b38124ae8aa69a317596af158e25492ed90588345b507bd8d2fea175ff2523558dbbf33e2
   languageName: node
   linkType: hard
 
@@ -14123,6 +14133,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-modules-regexp@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "node-modules-regexp@npm:1.0.0"
+  checksum: 99541903536c5ce552786f0fca7f06b88df595e62e423c21fa86a1674ee2363dad1f7482d1bec20b4bd9fa5f262f88e6e5cb788fc56411113f2fe2e97783a3a7
+  languageName: node
+  linkType: hard
+
 "node-releases@npm:^2.0.64":
   version: 2.0.65
   resolution: "node-releases@npm:2.0.65"
@@ -14775,6 +14792,15 @@ __metadata:
   version: 2.0.4
   resolution: "pinkie@npm:2.0.4"
   checksum: b12b10afea1177595aab036fc220785488f67b4b0fc49e7a27979472592e971614fa1c728e63ad3e7eb748b4ec3c3dbd780819331dad6f7d635c77c10537b9db
+  languageName: node
+  linkType: hard
+
+"pirates@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "pirates@npm:3.0.2"
+  dependencies:
+    node-modules-regexp: ^1.0.0
+  checksum: 73bc9d8a1859c0854740541d1afd0c87b62d3d63fdaec38c3ac7f57d9d70b9f6f325f5ffcac11b8935c8d9249ead41c9c59632ed098b225a96219274ca6248c8
   languageName: node
   linkType: hard
 
@@ -16823,7 +16849,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map-support@npm:^0.5.16, source-map-support@npm:~0.5.20":
+"source-map-support@npm:^0.5.16, source-map-support@npm:^0.5.21, source-map-support@npm:~0.5.20":
   version: 0.5.21
   resolution: "source-map-support@npm:0.5.21"
   dependencies:
