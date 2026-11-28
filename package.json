@@ -1,6 +1,9 @@
 {
   "name": "club-league",
   "private": true,
+  "engines": {
+    "node": ">=26"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -24,7 +27,7 @@
     "test": "echo \"No tests yet\""
   },
   "resolutions": {
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.6.6",
     "metro": "~0.88.0",
     "metro-resolver": "~0.88.0",
     "remove-flow-types-loader/flow-remove-types": "^2.343.0"
