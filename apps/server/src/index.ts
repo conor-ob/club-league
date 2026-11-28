@@ -10,8 +10,9 @@ import {
 } from "@apollo/server/plugin/landingPage/default";
 import { expressMiddleware } from "@as-integrations/express4";
 import { config } from "@club-league/config";
+import compression from "compression";
 import cors from "cors";
-import { default as compression, default as express } from "express";
+import express from "express";
 import next from "next";
 import type { ServerContext } from "./context/ServerContext";
 import { Database } from "./database/Database";
