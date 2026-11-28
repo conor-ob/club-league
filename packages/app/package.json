@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@apollo/client": "^3.14.1",
+    "@apollo/client": "^4.3.5",
     "@club-league/config": "*",
     "@club-league/utils": "*",
     "@expo/vector-icons": "^13.0.0",
