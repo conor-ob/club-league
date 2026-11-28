@@ -33,7 +33,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:^4.3.5":
+"@apollo/client@npm:^4.3.8":
   version: 4.3.8
   resolution: "@apollo/client@npm:4.3.8"
   dependencies:
@@ -6429,7 +6429,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "app@workspace:packages/app"
   dependencies:
-    "@apollo/client": ^4.3.5
+    "@apollo/client": ^4.3.8
     "@club-league/config": "*"
     "@club-league/graphql": "*"
     "@club-league/utils": "*"
