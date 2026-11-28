@@ -3132,7 +3132,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.29.13
     "@expo-google-fonts/inter": ^0.4.2
-    "@types/react": ^18.3.31
+    "@types/react": ^19.3.0
     "@types/react-native": ^0.73.0
     app: "*"
     expo: ^49.0.23
@@ -6568,13 +6568,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*":
-  version: 15.7.11
-  resolution: "@types/prop-types@npm:15.7.11"
-  checksum: 7519ff11d06fbf6b275029fe03fff9ec377b4cb6e864cac34d87d7146c7f5a7560fd164bdc1d2dbe00b60c43713631251af1fd3d34d46c69cd354602bc0c7c54
-  languageName: node
-  linkType: hard
-
 "@types/qs@npm:*, @types/qs@npm:^6.9.7":
   version: 6.9.12
   resolution: "@types/qs@npm:6.9.12"
@@ -6598,13 +6591,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.3.31":
-  version: 18.3.32
-  resolution: "@types/react@npm:18.3.32"
+"@types/react@npm:^19.3.0":
+  version: 19.3.3
+  resolution: "@types/react@npm:19.3.3"
   dependencies:
-    "@types/prop-types": "*"
     csstype: ^3.2.2
-  checksum: e05486d510d6740541c52c08fb92893d237f26ff3ecbd46b216b03edb1f510abba378b1a6ce2f5aab11e8a37221ffb2d6ac7b35886bcf5293dbd27c17344a0d4
+  checksum: 9be36f93a7334a6a3e0efec5aa600ea3ef85a553687eae7b7f644f80dc90ff376c5483ea1d4474bfce55873ceb07171348bce52178c6c7a7cea70d9549ec93c7
   languageName: node
   linkType: hard
 
@@ -8323,7 +8315,7 @@ __metadata:
   resolution: "club-league@workspace:."
   dependencies:
     "@biomejs/biome": 2.6.8
-    "@types/react": ^18.3.31
+    "@types/react": ^19.3.0
     "@types/react-native": ^0.73.0
     railway: ^3.17.0
     turbo: ^1.4.2
