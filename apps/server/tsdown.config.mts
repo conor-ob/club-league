@@ -1,3 +1,5 @@
+// .mts because this package stays CommonJS for Next, and tsconfig's "node"
+// moduleResolution can't resolve tsdown's types from a .ts config
 import { defineConfig } from "tsdown";
 
 export default defineConfig({
