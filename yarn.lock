@@ -3194,7 +3194,7 @@ __metadata:
     compression: ^1.8.2
     cors: ^2.8.6
     cross-env: ^7.0.3
-    date-fns: ^3.6.0
+    date-fns: ^4.4.0
     express: ^4.22.3
     globby: 11.1.0
     graphql: ^16.15.0
@@ -8872,10 +8872,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^3.6.0":
-  version: 3.6.0
-  resolution: "date-fns@npm:3.6.0"
-  checksum: 0daa1e9a436cf99f9f2ae9232b55e11f3dd46132bee10987164f3eebd29f245b2e066d7d7db40782627411ecf18551d8f4c9fcdf2226e48bb66545407d448ab7
+"date-fns@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "date-fns@npm:4.4.0"
+  checksum: 9a25020573f1aeaddfa0a41bb32411e8e1e8c81ddb870865a005c37f741778c737833baee350a90f275ae806dcd227e41bc4f26337dda189ebca796ce760ba11
   languageName: node
   linkType: hard
 
