@@ -131,9 +131,6 @@ function startServer() {
     .catch((e) => {
       console.error("Error starting server", e);
     });
-
-  return server;
 }
 
-const server = startServer();
-export const viteNodeApp = server;
+startServer();
