@@ -1,6 +1,6 @@
+import { globSync } from "node:fs";
 import path from "node:path";
 import { idFromPath } from "@club-league/utils";
-import { sync } from "globby";
 import type { FileReader } from "./FileReader";
 
 export class Database {
@@ -16,7 +16,7 @@ export class Database {
   }
 
   public getAll<T>(table: string): T[] {
-    const paths = sync(path.resolve(process.cwd(), `database/${table}/*`));
+    const paths = globSync(path.resolve(process.cwd(), `database/${table}/*`));
     return paths.map((it) => {
       const json = this.fileReader.readFile(it);
       return JSON.parse(json) as T;
@@ -24,7 +24,7 @@ export class Database {
   }
 
   public get<T>(table: string, filter: (value: string) => boolean): T[] {
-    const paths = sync(path.resolve(process.cwd(), `database/${table}/*`));
+    const paths = globSync(path.resolve(process.cwd(), `database/${table}/*`));
     return paths
       .filter((it) => filter(it))
       .map((it) => {
@@ -34,12 +34,12 @@ export class Database {
   }
 
   public getAllIds(table: string): string[] {
-    const paths = sync(path.resolve(process.cwd(), `database/${table}/*`));
+    const paths = globSync(path.resolve(process.cwd(), `database/${table}/*`));
     return paths.map((it) => idFromPath(it));
   }
 
   public getIds(table: string, filter: (value: string) => boolean): string[] {
-    const paths = sync(path.resolve(process.cwd(), `database/${table}/*`));
+    const paths = globSync(path.resolve(process.cwd(), `database/${table}/*`));
     return paths.filter((it) => filter(it)).map((it) => idFromPath(it));
   }
 }
