@@ -8,7 +8,7 @@ import {
   ApolloServerPluginLandingPageLocalDefault,
   ApolloServerPluginLandingPageProductionDefault,
 } from "@apollo/server/plugin/landingPage/default";
-import { expressMiddleware } from "@as-integrations/express4";
+import { expressMiddleware } from "@as-integrations/express5";
 import { config } from "@club-league/config";
 import compression from "compression";
 import cors from "cors";
@@ -115,7 +115,9 @@ function startServer() {
         }
       });
 
-      server.get("*", (req, res) =>
+      // Express 5 (path-to-regexp v8) needs a named wildcard; braces make it
+      // match "/" too
+      server.get("/{*splat}", (req, res) =>
         handleNextRequest(req, res, parse(req.url, true)),
       );
 
