@@ -7,11 +7,11 @@
   ],
   "devDependencies": {
     "@biomejs/biome": "2.6.8",
-    "@types/react": "^18.2.21",
-    "@types/react-native": "^0.72.2",
-    "railway": "^3.16.0",
+    "@types/react": "^18.3.31",
+    "@types/react-native": "^0.73.0",
+    "railway": "^3.17.0",
     "turbo": "^1.4.2",
-    "typescript": "^5.2.2"
+    "typescript": "^5.9.3"
   },
   "scripts": {
     "clean": "turbo run clean && rm -rf yarn.lock",
@@ -25,12 +25,12 @@
   },
   "resolutions": {
     "@types/node": "^24.19.2",
-    "metro": "~0.76.7",
-    "metro-resolver": "~0.76.7"
+    "metro": "~0.88.0",
+    "metro-resolver": "~0.88.0"
   },
   "nohoist": [
     "**/expo-router",
     "**/expo-router/**"
   ],
-  "packageManager": "yarn@3.4.1"
+  "packageManager": "yarn@3.8.7"
 }
