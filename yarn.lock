@@ -3182,7 +3182,7 @@ __metadata:
     "@headlessui/react": ^1.7.19
     "@heroicons/react": ^2.2.0
     "@khmyznikov/pwa-install": ^0.7.0
-    "@next/third-parties": ^14.2.35
+    "@next/third-parties": ^16.4.3
     "@types/compression": ^1.8.1
     "@types/cors": ^2.8.19
     "@types/express": ^4.17.25
@@ -5496,15 +5496,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/third-parties@npm:^14.2.35":
-  version: 14.2.35
-  resolution: "@next/third-parties@npm:14.2.35"
+"@next/third-parties@npm:^16.4.3":
+  version: 16.4.6
+  resolution: "@next/third-parties@npm:16.4.6"
   dependencies:
     third-party-capital: 1.0.20
   peerDependencies:
-    next: ^13.0.0 || ^14.0.0
-    react: ^18.2.0
-  checksum: d677a393d9cf9a6f21d4a6eb40ee55da0f7dd4fb4e292481fd6c743963ec0fa85e2f6740efcbe7fa37d69c8166495ae52f9800a10289883e7d810771b2b0693c
+    next: ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+    react: ^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0
+  checksum: 09b50b81492a65ed3bf92c91e627e860491fa29c07e24b7d35ceab4d73599a97b4da136383744c134f13d15d5812d74b782a77742e1772cf3d5d51272862996b
   languageName: node
   linkType: hard
 
